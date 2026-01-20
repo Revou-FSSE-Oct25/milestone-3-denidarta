@@ -1,0 +1,14 @@
+[00:00:00.748] Server  LOG     ✓ Ready in 520ms
+[00:00:09.520] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:36.175] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/denidarta/Documents/GitHub/milestone-3-denidarta/src/app'
+[00:04:36.180] Server  ERROR   ⨯ "unhandledRejection:" Error: ENOENT: no such file or directory, scandir '/Users/denidarta/Documents/GitHub/milestone-3-denidarta/src/app'
+[00:04:36.185] Server  ERROR   ⨯ "unhandledRejection: " Error: ENOENT: no such file or directory, scandir '/Users/denidarta/Documents/GitHub/milestone-3-denidarta/src/app'
+[00:04:36.208] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/denidarta/Documents/GitHub/milestone-3-denidarta/src/app'
+[00:04:36.215] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/denidarta/Documents/GitHub/milestone-3-denidarta/src/app'
+[00:04:36.235] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/denidarta/Documents/GitHub/milestone-3-denidarta/src/app'
+[00:04:36.240] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/denidarta/Documents/GitHub/milestone-3-denidarta/src/app'
+[00:04:36.264] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/denidarta/Documents/GitHub/milestone-3-denidarta/src/app'
+[00:04:36.269] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/denidarta/Documents/GitHub/milestone-3-denidarta/src/app'
+[00:04:36.430] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/denidarta/Documents/GitHub/milestone-3-denidarta/src/app'
+[00:04:36.433] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/Users/denidarta/Documents/GitHub/milestone-3-denidarta/src/app'
+[00:04:36.434] Server  LOG     ✓ Compiled in 169ms

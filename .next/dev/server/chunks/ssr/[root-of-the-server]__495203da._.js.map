@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/denidarta/Documents/GitHub/milestone-3-denidarta/src/app/page.js"],"sourcesContent":["export default function Home() {\n  return (\n    <div className=\"grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]\">\n      <main className=\"flex flex-col gap-8 row-start-2 items-center sm:items-start\">\n        <h1 className=\"text-4xl font-bold\">Hello World</h1>\n      </main>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,oSAAC;QAAI,WAAU;kBACb,cAAA,oSAAC;YAAK,WAAU;sBACd,cAAA,oSAAC;gBAAG,WAAU;0BAAqB;;;;;;;;;;;;;;;;AAI3C"}}]
+}
