@@ -5,21 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e60cd092-66a6-47cf-ae31-29fd808ed47c" name="Changes" comment="init: initialize project structure">
+      <change afterPath="$PROJECT_DIR$/src/app/playground/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/types/types.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/component/ProductCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/dev/build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/build-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/dev/fallback-build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/fallback-build-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/dev/logs/next-development.log" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/logs/next-development.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/dev/prerender-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/prerender-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/dev/server/app-paths-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/server/app-paths-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/dev/server/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/server/app/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/dev/server/app/page/next-font-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/server/app/page/next-font-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/dev/server/app/page_client-reference-manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/server/app/page_client-reference-manifest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/dev/server/middleware-build-manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/server/middleware-build-manifest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/dev/server/next-font-manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/server/next-font-manifest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/dev/server/next-font-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/server/next-font-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/dev/server/pages-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/server/pages-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/dev/static/development/_buildManifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/static/development/_buildManifest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/dev/trace" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/trace" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.next/dev/types/routes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.next/dev/types/routes.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,6 +130,8 @@
       <workItem from="1768903860329" duration="341000" />
       <workItem from="1768911980911" duration="3733000" />
       <workItem from="1768958962262" duration="852000" />
+      <workItem from="1768993265966" duration="566000" />
+      <workItem from="1769306750521" duration="2146000" />
     </task>
     <task id="LOCAL-00001" summary="init: initialize project structure">
       <option name="closed" value="true" />
