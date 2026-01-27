@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ProductDetail } from "@/app/types/types";
+import { ProductDetail } from "@/types";
 
 interface ProductDetailProps {
 	params: Promise<{

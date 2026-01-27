@@ -23,3 +23,14 @@ export interface User {
 	role: string;
 	avatar: string;
 }
+
+export interface ShippingAddress {
+	id: number;
+}
+
+export interface CardDetail {
+	id: number;
+	cardNumber: string;
+	expiryDate: string;
+	cvv: string;
+}

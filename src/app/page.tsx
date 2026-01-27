@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import axios from "axios";
 import ProductCard from "../component/ProductCard";
-import { ProductDetail } from "./types/types";
+import { ProductDetail } from "../types";
 
 export default function Home() {
 	const [products, setProducts] = useState<ProductDetail[]>([]);
@@ -13,16 +14,10 @@ export default function Home() {
 		const fetchProducts = async () => {
 			try {
 				setIsLoading(true);
-				const res = await fetch(
+				const result = await axios.get<ProductDetail[]>(
 					"https://api.escuelajs.co/api/v1/products",
 				);
-				if (!res.ok) {
-					throw new Error(
-						"Failed to fetch products. Please check your connection.",
-					);
-				}
-				const data = await res.json();
-				setProducts(data);
+				setProducts(result.data);
 			} catch (err: unknown) {
 				setError(
 					err instanceof Error

@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
 		remotePatterns: [
 			{
 				protocol: "https",
-				hostname: "placehold.co",
+				hostname: "**",
 				port: "",
 				pathname: "/**",
 			},
@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
 			},
 			{
 				protocol: "https",
-				hostname: "picsum.photos", // Common placeholder, just in case
+				hostname: "picsum.photos",
 				port: "",
 				pathname: "/**",
 			},
@@ -30,6 +30,11 @@ const nextConfig: NextConfig = {
 			{
 				protocol: "https",
 				hostname: "i.imgur.com",
+				port: "",
+				pathname: "/**",
+			},{
+				protocol: "https",
+				hostname: "placeimg.com",
 				port: "",
 				pathname: "/**",
 			},
