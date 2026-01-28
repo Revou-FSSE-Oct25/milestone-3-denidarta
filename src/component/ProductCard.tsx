@@ -4,27 +4,29 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ProductDetail } from "@/types";
+import Button from "@/component/Button";
 
 const ProductCard: React.FC<{ product: ProductDetail }> = ({ product }) => {
+	const [imgError, setImgError] = React.useState(false);
 	const router = useRouter();
-
-	const handleCardClick = () => {
+	const isClicked = () => {
 		router.push(`/product/${product.id}`);
 	};
 
 	return (
 		<div
-			onClick={handleCardClick}
-			className="cursor-pointer group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl dark:bg-zinc-900"
+			onClick={isClicked}
+			className="cursor-pointer group relative overflow-hidden bg-white border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl rounded-[40px]"
 		>
 			<div className="relative aspect-square overflow-hidden">
-				{product.images?.[0] ? (
+				{product.images?.[0] && !imgError ? (
 					<Image
 						src={product.images[0]}
 						alt={product.title}
 						fill
 						style={{ objectFit: "cover" }}
 						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+						onError={() => setImgError(true)}
 						priority
 					/>
 				) : (
@@ -38,24 +40,26 @@ const ProductCard: React.FC<{ product: ProductDetail }> = ({ product }) => {
 				</div>
 
 				<div className="absolute inset-x-0 bottom-0 translate-y-full p-4 transition-transform duration-500 group-hover:translate-y-0">
-					<button
+					<Button
 						onClick={(e) => {
 							e.stopPropagation();
 							console.log("Added to cart:", product.title);
 						}}
-						className="w-full rounded-xl bg-linear-to-r from-indigo-600 via-purple-600 to-pink-600 py-3 font-bold text-white shadow-xl transition-all hover:brightness-110 active:scale-95"
 					>
 						Add to Cart
-					</button>
+					</Button>
 				</div>
 			</div>
 
 			<div className="p-6">
 				<div className="mb-2 flex items-center justify-between">
-					<h3 className="line-clamp-1 text-lg font-bold text-zinc-800 transition-colors group-hover:text-indigo-600 dark:text-zinc-100 dark:group-hover:text-indigo-400">
+					<h3 className="line-clamp-1 text-lg font-bold text-zinc-800">
 						{product.title}
 					</h3>
-					<span className="text-xl font-black text-transparent bg-clip-text bg-linear-to-r from-indigo-500 to-purple-500">
+					<span
+						id="price-tag"
+						className="text-xl text-emerald-500 font-black"
+					>
 						${product.price}
 					</span>
 				</div>

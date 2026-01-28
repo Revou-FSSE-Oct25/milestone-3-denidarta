@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ProductDetail } from "@/types";
+import Button from "@/component/Button";
 
 interface ProductDetailProps {
 	params: Promise<{
@@ -93,6 +94,7 @@ const ProductDetailPage = async ({ params }: ProductDetailProps) => {
 									</span>
 								</p>
 							)}
+							<Button>Buy Now</Button>
 						</div>
 					</div>
 				</div>
