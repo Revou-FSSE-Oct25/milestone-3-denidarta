@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ProductDetail } from "@/types";
 
+
 const ProductCard: React.FC<{ product: ProductDetail }> = ({ product }) => {
 	const router = useRouter();
 
@@ -12,10 +13,12 @@ const ProductCard: React.FC<{ product: ProductDetail }> = ({ product }) => {
 		router.push(`/product/${product.id}`);
 	};
 
+	// TODO : Remove dark mode option in this code
+
 	return (
 		<div
 			onClick={handleCardClick}
-			className="cursor-pointer group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl dark:bg-zinc-900"
+			className="cursor-pointer group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
 		>
 			<div className="relative aspect-square overflow-hidden">
 				{product.images?.[0] ? (

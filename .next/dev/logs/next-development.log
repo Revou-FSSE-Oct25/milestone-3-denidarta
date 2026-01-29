@@ -1,22 +1,80 @@
-[00:00:00.939] Server  LOG      ✓ Ready in 701ms
-[00:00:11.335] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:12.520] Server  ERROR    ⨯ The requested resource "https://placehold.co/600x400" has type "image/svg+xml" but dangerouslyAllowSVG is disabled. Consider adding the "unoptimized" property to the <Image>.
-[00:00:13.374] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:13.679] Server  ERROR    ⨯ The requested resource "https://placehold.co/600x400" has type "image/svg+xml" but dangerouslyAllowSVG is disabled. Consider adding the "unoptimized" property to the <Image>.
-[00:00:14.582] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "https://pin.it/7hCotR6zb" "received" null
-[00:00:16.325] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "https://pin.it/7hCotR6zb" "received" null
-[00:00:17.330] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:17.616] Server  ERROR    ⨯ The requested resource "https://placehold.co/600x400" has type "image/svg+xml" but dangerouslyAllowSVG is disabled. Consider adding the "unoptimized" property to the <Image>.
-[00:00:19.078] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "https://pin.it/7hCotR6zb" "received" null
-[00:00:20.133] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:20.421] Server  ERROR    ⨯ The requested resource "https://placehold.co/600x400" has type "image/svg+xml" but dangerouslyAllowSVG is disabled. Consider adding the "unoptimized" property to the <Image>.
-[00:00:22.483] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "https://pin.it/7hCotR6zb" "received" null
-[00:00:22.994] Server  ERROR    ⨯ The requested resource "https://placehold.co/600x400" has type "image/svg+xml" but dangerouslyAllowSVG is disabled. Consider adding the "unoptimized" property to the <Image>.
-[00:00:23.028] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:00:24.999] Server  ERROR    ⨯ The requested resource "https://placehold.co/600x400" has type "image/svg+xml" but dangerouslyAllowSVG is disabled. Consider adding the "unoptimized" property to the <Image>.
-[00:00:26.589] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "https://pin.it/7hCotR6zb" "received" null
-[00:00:28.655] Server  ERROR    ⨯ The requested resource "https://placehold.co/600x400" has type "image/svg+xml" but dangerouslyAllowSVG is disabled. Consider adding the "unoptimized" property to the <Image>.
-[00:00:31.413] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "https://pin.it/7hCotR6zb" "received" null
-[00:03:42.758] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:03:44.284] Server  ERROR    ⨯ The requested resource "https://placehold.co/600x400" has type "image/svg+xml" but dangerouslyAllowSVG is disabled. Consider adding the "unoptimized" property to the <Image>.
-[00:03:45.670] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "https://pin.it/7hCotR6zb" "received" null
+[00:00:03.643] Server  LOG      ✓ Ready in 2.7s
+[00:00:06.727] Server  LOG      ○ Compiling /product/[productId] ...
+[00:00:08.687] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\.next\dev\server\chunks\ssr\node_modules_473cc24e._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:08.688] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\.next\dev\server\chunks\ssr\[root-of-the-server]__9a183503._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:08.688] Server  WARN    Error: Route "/product/[productId]" used `params.productId`. `params` is a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:00:09.529] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\.next\dev\server\chunks\ssr\[root-of-the-server]__9a183503._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:09.535] Server  ERROR    ⨯ Error: Failed to fetch product
+[00:00:09.859] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:09.859] Browser ERROR   uncaughtError: Error: Failed to fetch product
+[00:02:02.279] Server  LOG      ✓ Compiled in 170ms
+[00:02:04.679] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:50.186] Server  LOG      ✓ Compiled in 151ms
+[00:03:11.331] Server  LOG      ✓ Compiled in 445ms
+[00:03:14.602] Browser WARN    Image with src "https://i.imgur.com/R2PN9Wq.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:03:14.602] Browser WARN    Image with src "https://i.imgur.com/7eW9nXP.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:03:14.602] Browser WARN    Image with src "https://i.imgur.com/IvxMPFr.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:03:55.330] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:04.124] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:04.253] Browser LOG     getProducts() Running
+[00:04:05.273] Server  WARN     ⚠ The requested resource "https://media.tenor.com/86fFqjiVRwMAAAAM/wave-seal.gif" is an animated image so it will not be optimized. Consider adding the "unoptimized" property to the <Image>.
+[00:04:05.366] Server  WARN     ⚠ The requested resource "https://media.tenor.com/kXC4J07_IbwAAAAM/kriszh-advice-kriszh-advice-dance.gif" is an animated image so it will not be optimized. Consider adding the "unoptimized" property to the <Image>.
+[00:04:06.408] Server  WARN     ⚠ The requested resource "https://i.pinimg.com/originals/ba/45/9e/ba459ef144cb52eb73c6c80b00db893b.gif" is an animated image so it will not be optimized. Consider adding the "unoptimized" property to the <Image>.
+[00:04:16.381] Browser WARN    Image with src "https://i.imgur.com/R2PN9Wq.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:04:16.381] Browser WARN    Image with src "https://i.imgur.com/7eW9nXP.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:04:16.381] Browser WARN    Image with src "https://i.imgur.com/IvxMPFr.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:11.581] Browser LOG     getProducts() Running
+[00:05:11.581] Browser LOG     getProducts() Running
+[00:05:15.109] Browser WARN    Image with src "https://plus.unsplash.com/premium_photo-1664299631876-f143dc691c4d?q=80&w=697&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:18.902] Browser LOG     getProducts() Running
+[00:05:18.902] Browser LOG     getProducts() Running
+[00:05:21.706] Browser WARN    Image with src "https://i.imgur.com/cSytoSD.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:21.890] Browser WARN    Image with src "https://i.imgur.com/cE2Dxh9.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:21.890] Browser WARN    Image with src "https://i.imgur.com/WwKucXb.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:23.406] Browser LOG     getProducts() Running
+[00:05:23.406] Browser LOG     getProducts() Running
+[00:05:25.163] Browser WARN    Image with src "https://i.imgur.com/mp3rUty.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:25.163] Browser WARN    Image with src "https://i.imgur.com/JQRGIc2.jpeg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:29.452] Browser LOG     getProducts() Running
+[00:05:29.452] Browser LOG     getProducts() Running
+[00:05:31.666] Browser WARN    Image with src "https://i.pinimg.com/originals/ba/45/9e/ba459ef144cb52eb73c6c80b00db893b.gif" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:37.317] Browser LOG     getProducts() Running
+[00:05:37.318] Browser LOG     getProducts() Running
+[00:07:26.439] Server  LOG      ✓ Compiled in 136ms
+[00:07:32.516] Server  LOG      ✓ Compiled in 116ms
+[00:08:51.343] Browser LOG     getProducts() Running
+[00:08:51.343] Browser LOG     getProducts() Running
+[00:08:52.225] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\image-optimizer.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:52.236] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:52.239] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\response-cache\index.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:52.240] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\lib\batcher.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:52.248] Server  ERROR   TypeError: fetch failed
+[00:08:56.133] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\image-optimizer.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:56.137] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:56.144] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\response-cache\index.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:56.172] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\lib\batcher.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:56.179] Server  ERROR   TypeError: fetch failed
+[00:08:56.207] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\image-optimizer.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:56.214] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:56.222] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\response-cache\index.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:56.230] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\lib\batcher.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:56.232] Server  ERROR   TypeError: fetch failed
+[00:08:56.440] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\image-optimizer.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:56.461] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:56.462] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\response-cache\index.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:56.462] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\lib\batcher.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:56.464] Server  ERROR   TypeError: fetch failed
+[00:08:59.790] Browser LOG     getProducts() Running
+[00:08:59.791] Browser LOG     getProducts() Running
+[00:08:59.954] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\image-optimizer.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:59.955] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:59.956] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\response-cache\index.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:59.956] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\lib\batcher.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:08:59.957] Server  ERROR   TypeError: fetch failed
+[00:09:05.983] Browser LOG     getProducts() Running
+[00:09:05.983] Browser LOG     getProducts() Running
+[00:09:06.210] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\image-optimizer.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:09:06.211] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:09:06.212] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\server\response-cache\index.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:09:06.212] Server  ERROR   C:\Users\UI-UX Designer\Documents\GitHub\milestone-3-denidarta\node_modules\next\dist\lib\batcher.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:09:06.214] Server  ERROR   TypeError: fetch failed

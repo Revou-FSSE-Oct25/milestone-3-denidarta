@@ -1,6 +1,8 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ProductDetail } from "@/types";
+import Image from "next/image";
+import Link from "next/link";
+import { getProductById } from "@/lib/products/getProductById";
+import Button from "@/component/Button";
 
 interface ProductDetailProps {
 	params: Promise<{
@@ -11,93 +13,105 @@ interface ProductDetailProps {
 const ProductDetailPage = async ({ params }: ProductDetailProps) => {
 	const { productId } = await params;
 
-	let fetchedProduct: ProductDetail | null = null;
-	let error: string | null = null;
+	const product = await getProductById(productId);
 
-	try {
-		const response = await fetch(
-			`https://api.escuelajs.co/api/v1/products/${productId}`,
-		);
-
-		if (!response.ok) {
-			if (response.status === 404) {
-				notFound();
-			}
-			throw new Error(`Failed to fetch product: ${response.statusText}`);
-		}
-
-		fetchedProduct = await response.json();
-	} catch (err: unknown) {
-		console.error("Error fetching product:", err);
-		error =
-			err instanceof Error ? err.message : "An unknown error occurred";
+	if (!product) {
+		notFound();
 	}
-
-	if (!fetchedProduct) {
-		notFound(); // If product is null due to network error or other issues
-	}
-
-	const product = fetchedProduct;
 
 	return (
-		<div className="container mx-auto p-4">
-			{error && <p className="text-red-500">Error: {error}</p>}
+		<main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+			{/* Breadcrumbs / Back Link */}
+			<div className="mb-8">
+				<Link href="/" className="text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors">
+					&larr; Back to Products
+				</Link>
+			</div>
 
-			{product && (
-				<div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
-					<h1 className="text-3xl font-bold mb-4">{product.title}</h1>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-						<div className="flex flex-col items-center">
-							{product.images && product.images.length > 0 && (
-								<div className="relative w-full h-80 rounded-lg overflow-hidden mb-4">
-									{" "}
-									{/* Container for main image */}
+			<div className="lg:grid lg:grid-cols-2 lg:gap-x-12 lg:items-start">
+				{/* Image Gallery */}
+				<div className="flex flex-col-reverse">
+					<div className="hidden mt-6 w-full max-w-2xl mx-auto sm:block lg:max-w-none">
+						<div className="grid grid-cols-4 gap-6" aria-orientation="horizontal" role="tablist">
+							{product.images?.map((image, index) => (
+								<div key={index} className="relative h-24 bg-white rounded-md flex items-center justify-center text-sm font-medium uppercase text-gray-900 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4 ring-black ring-opacity-10 border overflow-hidden">
 									<Image
-										src={product.images[0]}
-										alt={product.title}
-										fill // Fills the parent container
-										style={{ objectFit: "cover" }} // Cover the container
-										sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Responsive sizes
-										priority
+										src={image || "/placeholder.png"}
+										alt={`${product.title} view ${index + 1}`}
+										fill
+										className="w-full h-full object-center object-cover"
 									/>
 								</div>
-							)}
-							<div className="flex space-x-2 overflow-x-auto">
-								{product.images &&
-									product.images
-										.slice(1)
-										.map((image, index) => (
-											<Image
-												key={index}
-												src={image}
-												alt={`${product.title} thumbnail ${index + 1}`}
-												width={96} // Equivalent to w-24 (96px)
-												height={96} // Equivalent to h-24 (96px)
-												className="object-cover rounded-md cursor-pointer"
-											/>
-										))}
-							</div>
-						</div>
-						<div>
-							<p className="text-2xl font-semibold text-gray-800 mb-4">
-								${product.price.toFixed(2)}
-							</p>
-							<p className="text-gray-700 mb-4">
-								{product.description}
-							</p>
-							{product.category && (
-								<p className="text-gray-600">
-									Category:{" "}
-									<span className="font-medium">
-										{product.category.name}
-									</span>
-								</p>
-							)}
+							))}
 						</div>
 					</div>
+
+					<div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden border bg-gray-100">
+						{product.images?.[0] ? (
+							<Image
+								src={product.images[0]}
+								alt={product.title}
+								width={600}
+								height={600}
+								className="w-full h-full object-center object-cover"
+								priority
+							/>
+						) : (
+							<div className="w-full h-full flex items-center justify-center text-gray-400">
+								No image available
+							</div>
+						)}
+					</div>
 				</div>
-			)}
-		</div>
+
+				{/* Product info */}
+				<div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
+					<div className="flex flex-col gap-4">
+						<div>
+							<span className="inline-block px-3 py-1 text-xs font-semibold tracking-wide uppercase bg-black text-white rounded-full">
+								{product.category.name}
+							</span>
+							<h1 className="mt-4 text-4xl font-extrabold tracking-tight text-gray-900 uppercase">
+								{product.title}
+							</h1>
+						</div>
+
+						<div className="mt-3">
+							<h2 className="sr-only">Product information</h2>
+							<p className="text-3xl text-gray-900 font-bold">${product.price.toLocaleString()}</p>
+						</div>
+
+						<div className="mt-6">
+							<h3 className="sr-only">Description</h3>
+							<div className="text-base text-gray-700 space-y-6">
+								<p>{product.description}</p>
+							</div>
+						</div>
+
+						<div className="mt-10 flex flex-col sm:flex-row gap-4">
+							<Button size="lg" className="flex-1 rounded-none uppercase tracking-widest py-6">
+								Add to Cart
+							</Button>
+							<Button variant="outline" size="lg" className="flex-1 rounded-none uppercase tracking-widest py-6">
+								Wishlist
+							</Button>
+						</div>
+
+						{/* Product details / features */}
+						<section className="mt-12 pt-12 border-t border-gray-200">
+							<h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider">Details</h3>
+							<div className="mt-4 prose prose-sm text-gray-500">
+								<ul role="list">
+									<li>Authentic {product.category.name} item</li>
+									<li>Last updated: {new Date(product.updatedAt).toLocaleDateString()}</li>
+									<li>Free shipping on orders over $100</li>
+								</ul>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</main>
 	);
 };
 
