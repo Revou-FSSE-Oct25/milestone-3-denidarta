@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import ProductCard from "../component/ProductCard";
 import { ProductDetail } from "@/types";
 import { getProducts } from "@/lib/products/getProducts";
+import { SortButton} from "@/component/SortButton";
+import { SearchBox} from "@/component/SearchBox";
+import { Filter} from "@/component/Filter";
 
 export default function Home() {
 	const [products, setProducts] = useState<ProductDetail[]>([]);
@@ -42,6 +45,13 @@ export default function Home() {
 			</header>
 
 			<main className="mx-auto max-w-7xl">
+				<div id={"list-control"} className={"flex flex-row w-full space-between"}>
+					<SearchBox></SearchBox>
+					<SortButton></SortButton>
+					<Filter></Filter>
+				</div>
+
+				{/*loading state*/}
 				{isLoading && (
 					<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 						{Array.from({ length: 8 }).map((_, i) => (
@@ -53,6 +63,7 @@ export default function Home() {
 					</div>
 				)}
 
+				{/*error state ui*/}
 				{error && (
 					<div className="py-20 text-center">
 						<h2 className="text-2xl font-bold text-zinc-800">
@@ -62,6 +73,7 @@ export default function Home() {
 					</div>
 				)}
 
+				{/*rendered ui*/}
 				{!isLoading && !error && (
 					<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 						{products.map((product) => (

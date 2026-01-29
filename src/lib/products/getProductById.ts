@@ -1,8 +1,6 @@
 import { ProductDetail } from "@/types";
 
-export async function getProductById(
-    productId: string
-): Promise<ProductDetail | null> {
+export async function getProductById(productId: string): Promise<ProductDetail | null> {
     if (!productId || isNaN(Number(productId))) {
         return null;
     }
@@ -13,9 +11,6 @@ export async function getProductById(
     );
 
     if (!res.ok) {
-        if (res.status === 404 || res.status === 400) {
-            return null;
-        }
         throw new Error("Failed to fetch product");
     }
 

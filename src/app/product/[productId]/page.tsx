@@ -23,8 +23,13 @@ const ProductDetailPage = async ({ params }: ProductDetailProps) => {
 		<main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 			{/* Breadcrumbs / Back Link */}
 			<div className="mb-8">
-				<Link href="/" className="text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors">
-					&larr; Back to Products
+				<Link href="/">
+					<Button
+						variant="outline"
+						className="text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors px-0"
+					>
+						← Back to Products
+					</Button>
 				</Link>
 			</div>
 
@@ -83,8 +88,10 @@ const ProductDetailPage = async ({ params }: ProductDetailProps) => {
 
 						<div className="mt-6">
 							<h3 className="sr-only">Description</h3>
-							<div className="text-base text-gray-700 space-y-6">
+							<div className="text-base text-font-secondary">
+								<h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider">Details</h3>
 								<p>{product.description}</p>
+								<p className={"mt-8"}>Last updated: {new Date(product.updatedAt).toLocaleDateString()}</p>
 							</div>
 						</div>
 
@@ -92,22 +99,10 @@ const ProductDetailPage = async ({ params }: ProductDetailProps) => {
 							<Button size="lg" className="flex-1 rounded-none uppercase tracking-widest py-6">
 								Add to Cart
 							</Button>
-							<Button variant="outline" size="lg" className="flex-1 rounded-none uppercase tracking-widest py-6">
+							<Button variant="ghost" size="lg" className="flex-1 rounded-none uppercase tracking-widest py-6">
 								Wishlist
 							</Button>
 						</div>
-
-						{/* Product details / features */}
-						<section className="mt-12 pt-12 border-t border-gray-200">
-							<h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider">Details</h3>
-							<div className="mt-4 prose prose-sm text-gray-500">
-								<ul role="list">
-									<li>Authentic {product.category.name} item</li>
-									<li>Last updated: {new Date(product.updatedAt).toLocaleDateString()}</li>
-									<li>Free shipping on orders over $100</li>
-								</ul>
-							</div>
-						</section>
 					</div>
 				</div>
 			</div>

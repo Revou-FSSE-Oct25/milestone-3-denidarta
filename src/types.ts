@@ -12,7 +12,7 @@ export interface ProductDetail {
 	title: string
 	slug: string
 	price: number
-	description: string
+	description?: string
 	category: ProductCategory
 	images: string[]
 	creationAt: string
