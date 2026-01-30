@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import ProductCard from "../component/ProductCard";
 import { ProductDetail } from "@/types";
 import { getProducts } from "@/lib/products/getProducts";
-import { SortButton} from "@/component/SortButton";
-import { SearchBox} from "@/component/SearchBox";
-import { Filter} from "@/component/Filter";
+import { SortButton } from "@/component/SortButton";
+import { SearchBox } from "@/component/SearchBox";
+import { Filter } from "@/component/Filter";
 
 export default function Home() {
 	const [products, setProducts] = useState<ProductDetail[]>([]);
@@ -34,12 +34,12 @@ export default function Home() {
 	}, []);
 
 	return (
-		<div className="min-h-screen bg-zinc-50 px-4 py-12 sm:px-8">
+		<div className="min-h-screen bg-surface px-4 py-12 sm:px-8">
 			<header className="mb-16 text-center">
-				<h1 className="text-4xl font-black tracking-tight text-zinc-900 sm:text-6xl">
-					Our <span className="text-indigo-600">Collection</span>
+				<h1 className="text-4xl font-black tracking-tight text-on-surface sm:text-6xl">
+					Our <span className="text-primary">Collection</span>
 				</h1>
-				<p className="mt-4 text-zinc-500">
+				<p className="mt-4 text-on-surface-variant">
 					Discover our curated selection of premium products.
 				</p>
 			</header>
@@ -75,11 +75,11 @@ export default function Home() {
 
 				{/*rendered ui*/}
 				{!isLoading && !error && (
-					<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+					<section id="product-grid" className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 						{products.map((product) => (
 							<ProductCard key={product.id} product={product} />
 						))}
-					</div>
+					</section>
 				)}
 			</main>
 		</div>

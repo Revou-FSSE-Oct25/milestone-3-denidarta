@@ -1,24 +1,78 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme {
-  --color-font-primary: var(--color-gray-600);
-  --color-font-secondary: var(--color-gray-200);
-  --color-font-disabled: var(--color-gray-200);
-  --color-font-brand: var(--color-amber-400);
+  --font-display: var(--font-bricolage-grotesque), sans-serif;
+  --font-body: var(--font-geist-sans), sans-serif;
+
+  --color-primary: #196B52;
+  --color-on-primary: #FFFFFF;
+  --color-primary-container: #A5F2D3;
+  --color-on-primary-container: #00513D;
+  --color-secondary: #4C6359;
+  --color-on-secondary: #FFFFFF;
+  --color-secondary-container: #CEE9DB;
+  --color-on-secondary-container: #4A4459;
+  --color-tertiary: #3F6375;
+  --color-on-tertiary: #FFFFFF;
+  --color-tertiary-container: #C2E8FD;
+  --color-on-tertiary-container: #264B5C;
+  --color-error: #BA1A1A;
+  --color-on-error: #FFFFFF;
+  --color-error-container: #FFDAD6;
+  --color-on-error-container: #93000A;
+  --color-background: #F5FBF6;
+  --color-on-background: #171D1A;
+  --color-surface: #F5FBF6;
+  --color-on-surface: #171D1A;
+  --color-surface-variant: #DBE5DE;
+  --color-on-surface-variant: #404944;
+  --color-outline: #707974;
+  --color-outline-variant: #BFC9C3;
+  --color-surface-tint: #196B52;
+  --color-shadow: #000000;
+  --color-scrim: #000000;
+  --color-inverse-surface: #2C322F;
+  --color-inverse-on-surface: #ECF2ED;
+  --color-inverse-primary: #8AD6B8;
+  --color-primary-fixed: #A5F2D3;
+  --color-on-primary-fixed: #002117;
+  --color-primary-fixed-dim: #8AD6B8;
+  --color-on-primary-fixed-variant: #00513D;
+  --color-secondary-fixed: #CEE9DB;
+  --color-on-secondary-fixed: #082018;
+  --color-secondary-fixed-dim: #B3CCC0;
+  --color-on-secondary-fixed-variant: #354C42;
+  --color-tertiary-fixed: #C2E8FD;
+  --color-on-tertiary-fixed: #001E2B;
+  --color-tertiary-fixed-dim: #A7CCE1;
+  --color-on-tertiary-fixed-variant: #264B5C;
+  --color-surface-dim: #D5DBD7;
+  --color-surface-bright: #F5FBF6;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-low: #EFF5F0;
+  --color-surface-container: #E9EFEA;
+  --color-surface-container-high: #E4EAE5;
+  --color-surface-container-highest: #DEE4DF;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+:root {
+  --background: var(--color-surface);
+  --foreground: var(--color-on-surface);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title,
+.headline {
+  font-family: var(--font-display);
 }
