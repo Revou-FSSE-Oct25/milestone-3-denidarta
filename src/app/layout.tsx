@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 	subsets: ["latin"],
 });
 
-const bricolageGrotesque = Bricolage_Grotesque({
+const bricolage = Bricolage_Grotesque({
 	variable: "--font-bricolage-grotesque",
 	subsets: ["latin"],
 });
@@ -30,10 +30,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} ${bricolageGrotesque.variable} antialiased`}
-			>
+		<html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable}`}>
+			<body className="antialiased">
 				<GlobalNavigation />
 				{children}
 				<Footer />

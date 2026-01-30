@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RevoTech
 
-## Getting Started
+## Overview
 
-First, run the development server:
+RevoTech is a modern e-commerce platform built with the Next.js App Router. It demonstrates key e-commerce functionalities such as dynamic product listings, server-rendered product detail pages, and a client-side shopping cart. The user interface is crafted with Tailwind CSS for a clean and responsive design.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+- **Product Discovery:** A comprehensive main page featuring product listings with images, names, and prices.
+- **Detailed Product View:** Server-side rendered pages for each product, providing detailed descriptions and information.
+- **Search and Filtering:** Robust client-side search functionality complemented by sorting and filtering capabilities to enhance user experience.
+- **Shopping Cart:** A persistent client-side shopping cart that allows users to add, manage, and remove items.
+- **User Authentication:** A dedicated login page for user authentication.
+- **Responsive Design:** A fully responsive layout that ensures a seamless experience across all devices.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **UI Library:** React 19
+- **Styling:** Tailwind CSS 4
+- **UI Components:** Radix UI
+- **Icons:** Material Symbols
+- **HTTP Client:** Axios
+- **Form Management:** React Hook Form
+- **Linting:** ESLint
+- **Testing:** Vitest
+
+## Deployed Website
+
+[Link](https://milestone3-deni.netlify.app/)
+
+## Folder Structure
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+src
+├── app
+│   ├── login
+│   │   └── page.tsx
+│   ├── playground
+│   │   └── page.tsx
+│   ├── product
+│   │   └── [productId]
+│   │       └── page.tsx
+│   ├── promotions
+│   │   └── page.tsx
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── Light.tokens.json
+│   ├── not-found.tsx
+│   └── page.tsx
+├── component
+│   ├── Breadcrumbs.tsx
+│   ├── Button.tsx
+│   ├── Filter.tsx
+│   ├── Footer.tsx
+│   ├── GlobalNavigation.tsx
+│   ├── ProductCard.tsx
+│   ├── SearchBox.tsx
+│   └── SortButton.tsx
+├── hooks
+│   └── useCart.ts
+├── lib
+│   ├── products
+│   │   ├── getProductById.ts
+│   │   ├── getProducts.ts
+│   │   ├── sortProducts.test.ts
+│   │   └── sortProducts.ts
+│   └── transactions
+│       └── shoppingCart.ts
+└── types.ts
+```
