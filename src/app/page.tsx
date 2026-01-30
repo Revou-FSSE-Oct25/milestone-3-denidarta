@@ -36,7 +36,7 @@ export default function Home() {
 	return (
 		<div className="min-h-screen bg-surface px-4 py-12 sm:px-8">
 			<header className="mb-16 text-center">
-				<h1 className="text-4xl font-black tracking-tight text-on-surface sm:text-6xl">
+				<h1 className="font-bricolage text-4xl font-black tracking-tight text-on-surface sm:text-6xl">
 					Our <span className="text-primary">Collection</span>
 				</h1>
 				<p className="mt-4 text-on-surface-variant">
