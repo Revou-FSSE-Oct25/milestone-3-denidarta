@@ -1,11 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ShoppingCart } from "@/types";
-import {
-    addToCart,
-    removeFromCart,
-    updateQuantity,
+import { ShoppingCart } from "@/types/types";
+import {addToCart, removeFromCart, updateQuantity,
 } from "@/lib/transactions/shoppingCart";
 
 const CART_KEY = "shopping-cart";
@@ -13,7 +10,6 @@ const CART_KEY = "shopping-cart";
 function useCart() {
     const [cart, setCart] = useState<ShoppingCart[]>([]);
 
-    // load once on client
     useEffect(() => {
         const raw = localStorage.getItem(CART_KEY);
         if (raw) {
@@ -21,7 +17,6 @@ function useCart() {
         }
     }, []);
 
-    // persist on every change
     useEffect(() => {
         localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }, [cart]);

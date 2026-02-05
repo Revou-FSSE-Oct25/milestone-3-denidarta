@@ -1,4 +1,4 @@
-import {ProductDetail} from "@/types";
+import {ProductDetail} from "@/types/types";
 
 export type SortKey = "price" | "name" | "date";
 export type SortOrder = "asc" | "desc";

@@ -1,4 +1,4 @@
-import { ShoppingCart } from "@/types";
+import { ShoppingCart } from "@/types/types";
 
 export function addToCart(
     cart: ShoppingCart[],

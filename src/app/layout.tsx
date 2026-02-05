@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import { Theme } from "@radix-ui/themes";
 import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
-import "./globals.css";
 import GlobalNavigation from "@/component/GlobalNavigation";
 import Footer from "@/component/Footer";
+import "@radix-ui/themes/styles.css";
+import "./globals.css";
+
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -31,10 +34,14 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable}`}>
-			<body className="antialiased">
-				<GlobalNavigation />
-				{children}
-				<Footer />
+			<body className="antialiased min-h-screen flex flex-col">
+				<Theme>
+					<GlobalNavigation />
+					<main>
+						{children}
+					</main>
+					<Footer />
+				</Theme>
 			</body>
 		</html>
 	);

@@ -1,4 +1,4 @@
-import { ProductDetail } from "@/types";
+import { ProductDetail } from "@/types/types";
 
 export async function getProductById(productId: string): Promise<ProductDetail | null> {
     if (!productId || isNaN(Number(productId))) {

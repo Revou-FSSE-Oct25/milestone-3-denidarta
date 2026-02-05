@@ -1,4 +1,4 @@
-import {ProductDetail} from "@/types";
+import {ProductDetail} from "@/types/types";
 
 export async function getProducts(): Promise<ProductDetail[]> {
     console.log('getProducts() Running')

@@ -1,4 +1,4 @@
-import { ProductDetail, ShoppingCart } from "@/types";
+import { ProductDetail, ShoppingCart } from "@/types/types";
 
 export interface AddToCartOptions {
     product: ProductDetail;
@@ -11,7 +11,7 @@ export const handleAddToCart = ({ product, add, setIsAdded }: AddToCartOptions) 
         id: product.id,
         title: product.title,
         price: product.price,
-        image: product.images?.[0] || "",
+        image: product.images?.[0] ?? "/placeholder-image.png", // Better fallback if empty
     });
 
     // Flash feedback

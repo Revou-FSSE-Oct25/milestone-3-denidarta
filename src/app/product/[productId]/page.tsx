@@ -6,7 +6,7 @@ import Link from "next/link";
 import { getProductById } from "@/lib/products/getProductById";
 import Button from "@/component/Button";
 import { use, useEffect, useState } from "react";
-import { ProductDetail } from "@/types";
+import { ProductDetail } from "@/types/types";
 import useCart from "@/hooks/useCart";
 import { handleAddToCart } from "@/lib/transactions/handleAddToCart";
 

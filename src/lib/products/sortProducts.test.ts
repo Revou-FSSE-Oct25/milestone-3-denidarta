@@ -1,7 +1,7 @@
 // lib/products/sortProducts.test.ts
 import { describe, it, expect } from "vitest";
 import { sortProducts } from "./sortProducts";
-import { ProductDetail } from "../../types";
+import { ProductDetail } from "../../types/types";
 
 const mockProducts: ProductDetail[] = [
     {

@@ -2,7 +2,7 @@
 
 import useCart from "@/hooks/useCart";
 import Button from "./Button";
-import { ProductDetail } from "@/types";
+import { ProductDetail } from "@/types/types";
 import { handleAddToCart } from "@/lib/transactions/handleAddToCart";
 import { useState } from "react";
 

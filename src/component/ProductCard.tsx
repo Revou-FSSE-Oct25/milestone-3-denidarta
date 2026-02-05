@@ -1,15 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, {useState} from "react";
+import {useRouter} from "next/navigation";
 import Image from "next/image";
-import { ProductDetail } from "@/types";
+import {ProductDetail} from "@/types/types";
 
 
-const ProductCard: React.FC<{ product: ProductDetail }> = ({ product }) => {
+const ProductCard: React.FC<{ product: ProductDetail }> = ({product}) => {
 	const router = useRouter();
 	const [imageError, setImageError] = useState(false);
-	const handleCardClick = () => { router.push(`/product/${product.id}`) };
+	const handleCardClick = () => {
+		router.push(`/product/${product.id}`);
+	};
 
 	return (
 		<div
@@ -22,18 +24,21 @@ const ProductCard: React.FC<{ product: ProductDetail }> = ({ product }) => {
 						src={product.images[0]}
 						alt={product.title}
 						fill
-						style={{ objectFit: "cover" }}
+						style={{objectFit: "cover"}}
 						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 						priority
+						unoptimized={true}
 						onError={() => setImageError(true)}
 					/>
 				) : (
-					<div className="flex h-full w-full items-center justify-center bg-surface-variant text-on-surface-variant">
+					<div
+						className="flex h-full w-full items-center justify-center bg-surface-variant text-on-surface-variant">
 						No Image
 					</div>
 				)}
 
-				<div id="category-badge" className="absolute top-4 left-4 rounded-full bg-secondary px-4 py-1.5 text-xs font-semibold text-on-secondary backdrop-blur-md">
+				<div id="category-badge"
+				     className="absolute top-4 left-4 rounded-full bg-secondary px-4 py-1.5 text-xs font-semibold text-on-secondary backdrop-blur-md">
 					{product.category.name}
 				</div>
 			</div>

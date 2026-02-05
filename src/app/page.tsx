@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import {useEffect, useState} from "react";
 import ProductCard from "../component/ProductCard";
-import { ProductDetail } from "@/types";
-import { getProducts } from "@/lib/products/getProducts";
-import { SortButton } from "@/component/SortButton";
-import { SearchBox } from "@/component/SearchBox";
-import { Filter } from "@/component/Filter";
+import {ProductDetail} from "@/types/types";
+import {productService} from "@/services/product.service"; // Import productService
+import {SortButton} from "@/component/SortButton";
+import {SearchBox} from "@/component/SearchBox";
+import {Filter} from "@/component/Filter";
 
 export default function Home() {
 	const [products, setProducts] = useState<ProductDetail[]>([]);
@@ -17,7 +17,8 @@ export default function Home() {
 		const fetchProducts = async () => {
 			try {
 				setIsLoading(true);
-				const data = await getProducts();
+				// Replace inline fetching with the service method
+				const data = await productService.getAllProducts(); 
 				setProducts(data);
 			} catch (err) {
 				setError(
@@ -54,7 +55,7 @@ export default function Home() {
 				{/*loading state*/}
 				{isLoading && (
 					<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-						{Array.from({ length: 8 }).map((_, i) => (
+						{Array.from({length: 8}).map((_, i) => (
 							<div
 								key={i}
 								className="h-96 animate-pulse rounded-2xl bg-zinc-200"
@@ -75,9 +76,10 @@ export default function Home() {
 
 				{/*rendered ui*/}
 				{!isLoading && !error && (
-					<section id="product-grid" className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+					<section id="product-grid"
+					         className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 						{products.map((product) => (
-							<ProductCard key={product.id} product={product} />
+							<ProductCard key={product.id} product={product}/>
 						))}
 					</section>
 				)}
