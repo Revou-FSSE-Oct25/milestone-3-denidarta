@@ -1,9 +1,9 @@
-import { describe, it, expect, vi } from "vitest";
-import { productService } from "./../src/services/product.service";
+import {describe, expect, it, vi} from "vitest";
+import {productService} from "./../src/services/product.service";
 
 describe("productService.getProductCategories", () => {
 	it("returns categories when fetch succeeds", async () => {
-		const mockData = [{ id: 1, name: "Electronics" }];
+		const mockData = [{id: 1, name: "Electronics"}];
 
 		global.fetch = vi.fn(() =>
 			Promise.resolve({
@@ -12,7 +12,7 @@ describe("productService.getProductCategories", () => {
 			} as Response)
 		);
 
-		const result = await productService.getProductCategories(1);
+		const result = await productService.getProductCategories();
 
 		expect(fetch).toHaveBeenCalledOnce();
 		expect(result).toEqual(mockData);
@@ -25,7 +25,7 @@ describe("productService.getProductCategories", () => {
 			} as Response)
 		);
 
-		expect(productService.getProductCategories(1)).rejects.toThrow(
+		expect(productService.getProductCategories()).rejects.toThrow(
 			"Failed to fetch categories"
 		);
 	});

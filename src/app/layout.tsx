@@ -3,21 +3,27 @@ import {Theme} from "@radix-ui/themes";
 import {Bricolage_Grotesque, Geist, Geist_Mono} from "next/font/google";
 import "@radix-ui/themes/styles.css";
 import "./globals.css";
+import React from "react";
 
+// Display font - used for headings and titles
+const bricolageGrotesque = Bricolage_Grotesque({
+	variable: "--font-display",
+	subsets: ["latin"],
+	display: "swap",
+});
 
+// Sans/body font - used for body text
 const geistSans = Geist({
-	variable: "--font-geist-sans",
+	variable: "--font-sans",
 	subsets: ["latin"],
+	display: "swap",
 });
 
+// Mono font - used for code
 const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
+	variable: "--font-mono",
 	subsets: ["latin"],
-});
-
-const bricolage = Bricolage_Grotesque({
-	variable: "--font-bricolage-grotesque",
-	subsets: ["latin"],
+	display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -31,12 +37,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable}`}>
+		<html
+			lang="en"
+			className={`${bricolageGrotesque.variable} ${geistSans.variable} ${geistMono.variable}`}
+		>
 		<body className="antialiased min-h-screen flex flex-col">
 		<Theme>
-			<main>
-				{children}
-			</main>
+			<main>{children}</main>
 		</Theme>
 		</body>
 		</html>

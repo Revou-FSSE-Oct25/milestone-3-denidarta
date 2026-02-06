@@ -1,5 +1,5 @@
-import axios, { AxiosInstance } from "axios";
-import { LoginRequest, LoginResponse } from "@/types/auth.types";
+import axios, {AxiosInstance} from "axios";
+import {LoginRequest, LoginResponse} from "@/types/auth.types";
 
 const API_URL = "https://api.escuelajs.co/api/v1";
 const apiClient: AxiosInstance = axios.create({

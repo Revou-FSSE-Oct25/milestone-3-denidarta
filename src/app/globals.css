@@ -2,73 +2,71 @@
 @import "material-symbols/rounded.css";
 
 @theme {
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
-  --font-bricolage: var(--font-bricolage);
+    /* Font family definitions using Next.js font CSS variables */
+    --font-family-display: var(--font-display);
+    --font-family-sans: var(--font-sans);
+    --font-family-mono: var(--font-mono);
 
-  --color-primary: #196B52;
-  --color-on-primary: #FFFFFF;
-  --color-primary-container: #A5F2D3;
-  --color-on-primary-container: #00513D;
-  --color-secondary: #4C6359;
-  --color-on-secondary: #FFFFFF;
-  --color-secondary-container: #CEE9DB;
-  --color-on-secondary-container: #4A4459;
-  --color-tertiary: #3F6375;
-  --color-on-tertiary: #FFFFFF;
-  --color-tertiary-container: #C2E8FD;
-  --color-on-tertiary-container: #264B5C;
-  --color-error: #BA1A1A;
-  --color-on-error: #FFFFFF;
-  --color-error-container: #FFDAD6;
-  --color-on-error-container: #93000A;
-  --color-background: #F5FBF6;
-  --color-on-background: #171D1A;
-  --color-surface: #F5FBF6;
-  --color-on-surface: #171D1A;
-  --color-surface-variant: #DBE5DE;
-  --color-on-surface-variant: #404944;
-  --color-outline: #707974;
-  --color-outline-variant: #BFC9C3;
-  --color-surface-tint: #196B52;
-  --color-shadow: #000000;
-  --color-scrim: #000000;
-  --color-inverse-surface: #2C322F;
-  --color-inverse-on-surface: #ECF2ED;
-  --color-inverse-primary: #8AD6B8;
-  --color-primary-fixed: #A5F2D3;
-  --color-on-primary-fixed: #002117;
-  --color-primary-fixed-dim: #8AD6B8;
-  --color-on-primary-fixed-variant: #00513D;
-  --color-secondary-fixed: #CEE9DB;
-  --color-on-secondary-fixed: #082018;
-  --color-secondary-fixed-dim: #B3CCC0;
-  --color-on-secondary-fixed-variant: #354C42;
-  --color-tertiary-fixed: #C2E8FD;
-  --color-on-tertiary-fixed: #001E2B;
-  --color-tertiary-fixed-dim: #A7CCE1;
-  --color-on-tertiary-fixed-variant: #264B5C;
-  --color-surface-dim: #D5DBD7;
-  --color-surface-bright: #F5FBF6;
-  --color-surface-container-lowest: #FFFFFF;
-  --color-surface-container-low: #EFF5F0;
-  --color-surface-container: #E9EFEA;
-  --color-surface-container-high: #E4EAE5;
-  --color-surface-container-highest: #DEE4DF;
+    --color-primary: #196b52;
+    --color-on-primary: #ffffff;
+    --color-primary-container: #a5f2d3;
+    --color-on-primary-container: #00513d;
+    --color-secondary: #4c6359;
+    --color-on-secondary: #ffffff;
+    --color-secondary-container: #cee9db;
+    --color-on-secondary-container: #4a4459;
+    --color-tertiary: #3f6375;
+    --color-on-tertiary: #ffffff;
+    --color-tertiary-container: #c2e8fd;
+    --color-on-tertiary-container: #264b5c;
+    --color-error: #ba1a1a;
+    --color-on-error: #ffffff;
+    --color-error-container: #ffdad6;
+    --color-on-error-container: #93000a;
+    --color-background: #f5fbf6;
+    --color-on-background: #171d1a;
+    --color-surface: #f5fbf6;
+    --color-on-surface: #171d1a;
+    --color-surface-variant: #dbe5de;
+    --color-on-surface-variant: #404944;
+    --color-outline: #707974;
+    --color-outline-variant: #bfc9c3;
+    --color-surface-tint: #196b52;
+    --color-shadow: #000000;
+    --color-scrim: #000000;
+    --color-inverse-surface: #2c322f;
+    --color-inverse-on-surface: #ecf2ed;
+    --color-inverse-primary: #8ad6b8;
+    --color-primary-fixed: #a5f2d3;
+    --color-on-primary-fixed: #002117;
+    --color-primary-fixed-dim: #8ad6b8;
+    --color-on-primary-fixed-variant: #00513d;
+    --color-secondary-fixed: #cee9db;
+    --color-on-secondary-fixed: #082018;
+    --color-secondary-fixed-dim: #b3ccc0;
+    --color-on-secondary-fixed-variant: #354c42;
+    --color-tertiary-fixed: #c2e8fd;
+    --color-on-tertiary-fixed: #001e2b;
+    --color-tertiary-fixed-dim: #a7cce1;
+    --color-on-tertiary-fixed-variant: #264b5c;
+    --color-surface-dim: #d5dbd7;
+    --color-surface-bright: #f5fbf6;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-low: #eff5f0;
+    --color-surface-container: #e9efea;
+    --color-surface-container-high: #e4eae5;
+    --color-surface-container-highest: #dee4df;
 }
 
 :root {
-  --background: var(--color-surface);
-  --foreground: var(--color-on-surface);
-  --font-display: var(--font-bricolage-grotesque), sans-serif;
-  --font-body: var(--font-geist-sans), sans-serif;
-  --font-bricolage: var(--font-bricolage-grotesque), sans-serif;
+    --background: var(--color-surface);
+    --foreground: var(--color-on-surface);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body);
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-family-sans);
 }
 
 h1,
@@ -79,12 +77,15 @@ h5,
 h6,
 .title,
 .headline {
-  font-family: var(--font-display);
+    font-family: var(--font-family-display);
 }
 
 /* Override Material Symbols default font-size */
 .material-symbols-rounded {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-variation-settings: "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
 }
 
 /* Font utility classes generated via @theme */
