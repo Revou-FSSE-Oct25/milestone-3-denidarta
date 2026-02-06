@@ -3,10 +3,11 @@
 import React, {useState} from "react";
 import {useRouter} from "next/navigation";
 import Image from "next/image";
-import {ProductDetail} from "@/types/types";
+
+import {Product} from "@/types/product.types";
 
 
-const ProductCard: React.FC<{ product: ProductDetail }> = ({product}) => {
+const ProductCard: React.FC<{ product: Product }> = ({product}) => {
 	const router = useRouter();
 	const [imageError, setImageError] = useState(false);
 	const handleCardClick = () => {

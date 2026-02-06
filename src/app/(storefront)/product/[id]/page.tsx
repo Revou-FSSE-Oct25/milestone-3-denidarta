@@ -1,52 +1,22 @@
-"use client";
-
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getProductById } from "@/lib/products/getProductById";
-import Button from "@/component/Button";
-import { use, useEffect, useState } from "react";
-import { ProductDetail } from "@/types/types";
-import useCart from "@/hooks/useCart";
-import { handleAddToCart } from "@/lib/transactions/handleAddToCart";
+import Button from "@/components/Button";
 
 interface ProductDetailProps {
 	params: Promise<{
-		productId: string;
+		id: string;
 	}>;
 }
 
-const ProductDetailPage = ({ params }: ProductDetailProps) => {
-	const { productId } = use(params);
-	const [product, setProduct] = useState<ProductDetail | null>(null);
-	const [loading, setLoading] = useState(true);
-	const { add } = useCart();
-	const [isAdded, setIsAdded] = useState(false);
-
-	useEffect(() => {
-		getProductById(productId)
-			.then((p) => {
-				setProduct(p);
-				setLoading(false);
-			})
-			.catch(() => {
-				setLoading(false);
-			});
-	}, [productId]);
-
-	if (loading) {
-		return (
-			<div className="flex items-center justify-center min-h-screen">
-				<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-			</div>
-		);
-	}
+const ProductDetailPage = async ({ params }: ProductDetailProps) => {
+	const { id } = await params;
+	const product = await getProductById(id);
 
 	if (!product) {
 		notFound();
 	}
-
-	const onAdd = () => handleAddToCart({ product, add, setIsAdded });
 
 	return (
 		<main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -54,8 +24,9 @@ const ProductDetailPage = ({ params }: ProductDetailProps) => {
 			<div className="mb-8">
 				<Link href="/">
 					<Button
-						variant="outline"
-						className="text-base font-medium px-0">
+						variant="secondary"
+						className="text-base font-medium px-0"
+					>
 						← Back to Products
 					</Button>
 				</Link>
@@ -68,11 +39,13 @@ const ProductDetailPage = ({ params }: ProductDetailProps) => {
 						<div
 							className="grid grid-cols-4 gap-6"
 							aria-orientation="horizontal"
-							role="tablist">
+							role="tablist"
+						>
 							{product.images?.map((image, index) => (
 								<div
 									key={index}
-									className="relative h-24 bg-white rounded-md flex items-center justify-center text-sm font-medium uppercase text-gray-900 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4 ring-black ring-opacity-10 border overflow-hidden">
+									className="relative h-24 bg-white rounded-md flex items-center justify-center text-sm font-medium uppercase text-gray-900 cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4 ring-black ring-opacity-10 border overflow-hidden"
+								>
 									<Image
 										src={image || "/placeholder.png"}
 										alt={`${product.title} view ${index + 1}`}
@@ -107,7 +80,7 @@ const ProductDetailPage = ({ params }: ProductDetailProps) => {
 					<div className="flex flex-col gap-4">
 						<div>
 							<span className="inline-block px-3 py-1 text-xs font-semibold tracking-wide uppercase bg-black text-white rounded-full">
-								{product.category.name}
+								{product.category?.name ?? "Unknown Category"}
 							</span>
 							<h1 className="mt-4 text-4xl font-extrabold tracking-tight text-gray-900 uppercase">
 								{product.title}
@@ -117,7 +90,7 @@ const ProductDetailPage = ({ params }: ProductDetailProps) => {
 						<div className="mt-3">
 							<h2 className="sr-only">Product information</h2>
 							<p className="text-3xl text-gray-900 font-bold">
-								${product.price.toLocaleString()}
+								${product.price}
 							</p>
 						</div>
 
@@ -138,17 +111,13 @@ const ProductDetailPage = ({ params }: ProductDetailProps) => {
 						</div>
 
 						<div className="mt-10 flex flex-col sm:flex-row gap-4">
-							<Button
-								size="lg"
-								className="flex-1 uppercase tracking-widest py-6"
-								onClick={onAdd}
-								disabled={isAdded}>
-								{isAdded ? "Added!" : "Add to Cart"}
+							<Button className="flex-1 uppercase tracking-widest py-6">
+								Add to Cart
 							</Button>
 							<Button
-								variant="outline"
-								size="lg"
-								className="uppercase tracking-widest py-6">
+								variant="secondary"
+								className="uppercase tracking-widest py-6"
+							>
 								Wishlist
 							</Button>
 						</div>
@@ -160,4 +129,3 @@ const ProductDetailPage = ({ params }: ProductDetailProps) => {
 };
 
 export default ProductDetailPage;
-

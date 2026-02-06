@@ -1,15 +1,12 @@
 "use client";
 
 import {useEffect, useState} from "react";
-import ProductCard from "../component/ProductCard";
-import {ProductDetail} from "@/types/types";
-import {productService} from "@/services/product.service"; // Import productService
-import {SortButton} from "@/component/SortButton";
-import {SearchBox} from "@/component/SearchBox";
-import {Filter} from "@/component/Filter";
+import ProductCard from "../components/ProductCard";
+import {productService} from "@/services/product.service";
+import {Product} from "@/types/product.types";
 
 export default function Home() {
-	const [products, setProducts] = useState<ProductDetail[]>([]);
+	const [products, setProducts] = useState<Product[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 
@@ -17,8 +14,7 @@ export default function Home() {
 		const fetchProducts = async () => {
 			try {
 				setIsLoading(true);
-				// Replace inline fetching with the service method
-				const data = await productService.getAllProducts(); 
+				const data = await productService.getAllProducts();
 				setProducts(data);
 			} catch (err) {
 				setError(
@@ -47,9 +43,6 @@ export default function Home() {
 
 			<main className="mx-auto max-w-7xl">
 				<div id={"list-control"} className={"flex flex-row w-full space-between"}>
-					<SearchBox></SearchBox>
-					<SortButton></SortButton>
-					<Filter></Filter>
 				</div>
 
 				{/*loading state*/}

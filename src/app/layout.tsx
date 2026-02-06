@@ -1,8 +1,6 @@
-import type { Metadata } from "next";
-import { Theme } from "@radix-ui/themes";
-import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
-import GlobalNavigation from "@/component/GlobalNavigation";
-import Footer from "@/component/Footer";
+import type {Metadata} from "next";
+import {Theme} from "@radix-ui/themes";
+import {Bricolage_Grotesque, Geist, Geist_Mono} from "next/font/google";
 import "@radix-ui/themes/styles.css";
 import "./globals.css";
 
@@ -28,21 +26,19 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-	children,
-}: Readonly<{
+	                                   children,
+                                   }: Readonly<{
 	children: React.ReactNode;
 }>) {
 	return (
 		<html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable}`}>
-			<body className="antialiased min-h-screen flex flex-col">
-				<Theme>
-					<GlobalNavigation />
-					<main>
-						{children}
-					</main>
-					<Footer />
-				</Theme>
-			</body>
+		<body className="antialiased min-h-screen flex flex-col">
+		<Theme>
+			<main>
+				{children}
+			</main>
+		</Theme>
+		</body>
 		</html>
 	);
 }

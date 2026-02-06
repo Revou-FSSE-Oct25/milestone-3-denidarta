@@ -1,5 +1,5 @@
 import React from "react";
-import Button from '@/component/Button'
+import Button from '@/components/Button'
 import {TextField} from "@radix-ui/themes"
 
 export default function LoginPage() {
