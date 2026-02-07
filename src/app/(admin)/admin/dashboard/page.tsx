@@ -6,9 +6,6 @@ import {Heading, Table} from "@radix-ui/themes";
 import {productService} from "@/services/product.service";
 import {User} from "@/types/user.types";
 
-
-
-
 export default function Dashboard() {
 	const [users, setUsers] = useState<User[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
