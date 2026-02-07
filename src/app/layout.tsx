@@ -4,6 +4,7 @@ import {Bricolage_Grotesque, Geist, Geist_Mono} from "next/font/google";
 import "@radix-ui/themes/styles.css";
 import "./globals.css";
 import React from "react";
+import NavBar from "@/components/NavBar";
 
 // Display font - used for headings and titles
 const bricolageGrotesque = Bricolage_Grotesque({
@@ -41,8 +42,9 @@ export default function RootLayout({
 			lang="en"
 			className={`${bricolageGrotesque.variable} ${geistSans.variable} ${geistMono.variable}`}
 		>
-		<body className="antialiased min-h-screen flex flex-col">
+		<body className={"antialiased"}>
 		<Theme>
+			<NavBar className="sticky top-0 z-50 bg-surface" />
 			<main>{children}</main>
 		</Theme>
 		</body>

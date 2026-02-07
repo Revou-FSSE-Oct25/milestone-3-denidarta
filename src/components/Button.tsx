@@ -44,12 +44,13 @@ export default function Button({
 		),
 		secondary: clsx(
 			"bg-secondary-container text-on-secondary-container",
+			"bg-clip-padding",
 			"hover:opacity-90",
 			"active:scale-95",
 			"focus-visible:ring-secondary"
 		),
 		outline: clsx(
-			"bg-surface border-2 border-outline text-on-surface",
+			"bg-surface border-2 border-blue-500 box-border text-on-surface",
 			"hover:bg-surface-variant",
 			"active:scale-95",
 			"focus-visible:ring-outline"

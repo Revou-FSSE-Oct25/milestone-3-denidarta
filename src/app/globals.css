@@ -58,6 +58,12 @@
     --color-surface-container-highest: #dee4df;
 }
 
+@layer base {
+    .rt-Theme {
+        display: contents !important;
+    }
+}
+
 :root {
     --background: var(--color-surface);
     --foreground: var(--color-on-surface);
