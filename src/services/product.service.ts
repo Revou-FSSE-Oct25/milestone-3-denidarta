@@ -1,5 +1,5 @@
-import { Product, ProductCategory } from "@/types/product.types";
-import { User } from "@/types/user.types";
+import {Product, ProductCategory} from "@/types/product.types";
+import {User} from "@/types/user.types";
 
 const API_BASE_URL = "https://api.escuelajs.co/api/v1";
 const API_CATEGORY = "https://api.escuelajs.co/api/v1/categories";
