@@ -11,6 +11,7 @@ export async function sendLoginRequest(
 ): Promise<LoginResponse> {
 	try {
 		const response = await apiClient.post("/auth/login", credentials);
+
 		return response.data;
 	} catch (error) {
 		if (axios.isAxiosError(error)) {

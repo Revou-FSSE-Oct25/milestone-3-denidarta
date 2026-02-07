@@ -2,13 +2,17 @@
 
 ## Overview
 
-RevoTech is a modern e-commerce platform built with the Next.js App Router. It demonstrates key e-commerce functionalities such as dynamic product listings, server-rendered product detail pages, and a client-side shopping cart. The user interface is crafted with Tailwind CSS for a clean and responsive design.
+RevoTech is a modern e-commerce platform built with the Next.js App Router. It demonstrates key e-commerce
+functionalities such as dynamic product listings, server-rendered product detail pages, and a client-side shopping cart.
+The user interface is crafted with Tailwind CSS for a clean and responsive design.
 
 ## Features
 
 - **Product Discovery:** A comprehensive main page featuring product listings with images, names, and prices.
-- **Detailed Product View:** Server-side rendered pages for each product, providing detailed descriptions and information.
-- **Search and Filtering:** Robust client-side search functionality complemented by sorting and filtering capabilities to enhance user experience.
+- **Detailed Product View:** Server-side rendered pages for each product, providing detailed descriptions and
+  information.
+- **Search and Filtering:** Robust client-side search functionality complemented by sorting and filtering capabilities
+  to enhance user experience.
 - **Shopping Cart:** A persistent client-side shopping cart that allows users to add, manage, and remove items.
 - **User Authentication:** A dedicated login page for user authentication.
 - **Responsive Design:** A fully responsive layout that ensures a seamless experience across all devices.
@@ -55,7 +59,7 @@ src
 │   ├── Button.tsx
 │   ├── Filter.tsx
 │   ├── Footer.tsx
-│   ├── GlobalNavigation.tsx
+│   ├── NavBar.tsx
 │   ├── ProductCard.tsx
 │   ├── SearchBox.tsx
 │   └── SortButton.tsx

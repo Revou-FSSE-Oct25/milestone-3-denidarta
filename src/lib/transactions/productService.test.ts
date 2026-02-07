@@ -1,5 +1,5 @@
 import {describe, expect, it, vi} from "vitest";
-import {productService} from "./../src/services/product.service";
+import {productService} from "@/services/product.service";
 
 describe("productService.getProductCategories", () => {
 	it("returns categories when fetch succeeds", async () => {
@@ -25,7 +25,7 @@ describe("productService.getProductCategories", () => {
 			} as Response)
 		);
 
-		expect(productService.getProductCategories()).rejects.toThrow(
+		await expect(productService.getProductCategories()).rejects.toThrow(
 			"Failed to fetch categories"
 		);
 	});
