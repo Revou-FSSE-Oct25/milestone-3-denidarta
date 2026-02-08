@@ -6,7 +6,7 @@ import {addToCart, removeFromCart, updateQuantity,} from "@/lib/transactions/sho
 
 const CART_KEY = "shopping-cart";
 
-function readCartFromStorage(): ShoppingCart[] {
+function getCartStatus(): ShoppingCart[] {
 	if (typeof window === "undefined") return [];
 
 	const raw = window.localStorage.getItem(CART_KEY);
@@ -22,7 +22,7 @@ function readCartFromStorage(): ShoppingCart[] {
 }
 
 function useCart() {
-	const [cart, setCart] = useState<ShoppingCart[]>(() => readCartFromStorage());
+	const [cart, setCart] = useState<ShoppingCart[]>(() => getCartStatus());
 
 	useEffect(() => {
 		window.localStorage.setItem(CART_KEY, JSON.stringify(cart));

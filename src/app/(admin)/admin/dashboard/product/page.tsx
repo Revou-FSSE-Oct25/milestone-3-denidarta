@@ -16,8 +16,8 @@ export default function ProductList() {
 	if (isLoading) return <div>Searching the warehouse...</div>;
 
 	return (
-		<main>
-			<Button>Add Product</Button>
+		<main className={" flex flex-col px-5"}>
+			<Button className={"w-fit"}>Add Product</Button>
 			<Table.Root variant="surface">
 				<Table.Header>
 					<Table.Row>

@@ -31,7 +31,7 @@ export default function Dashboard() {
 	if (error) return <div>Error: {error}</div>;
 
 	return (
-		<main>
+		<main className={"flex flex-col px-5"}>
 			<Heading>User Dashboard</Heading>
 			<Table.Root>
 				<Table.Header>
