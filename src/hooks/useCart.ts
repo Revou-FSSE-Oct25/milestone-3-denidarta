@@ -1,38 +1,45 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ShoppingCart } from "@/types/types";
-import {addToCart, removeFromCart, updateQuantity,
-} from "@/lib/transactions/shoppingCart";
+import {useEffect, useState} from "react";
+import {ShoppingCart} from "@/types/types";
+import {addToCart, removeFromCart, updateQuantity,} from "@/lib/transactions/shoppingCart";
 
 const CART_KEY = "shopping-cart";
 
-function useCart() {
-    const [cart, setCart] = useState<ShoppingCart[]>([]);
+function getCartStatus(): ShoppingCart[] {
+	if (typeof window === "undefined") return [];
 
-    useEffect(() => {
-        const raw = localStorage.getItem(CART_KEY);
-        if (raw) {
-            setCart(JSON.parse(raw) as ShoppingCart[]);
-        }
-    }, []);
+	const raw = window.localStorage.getItem(CART_KEY);
+	if (!raw) return [];
 
-    useEffect(() => {
-        localStorage.setItem(CART_KEY, JSON.stringify(cart));
-    }, [cart]);
-
-    return {
-        cart,
-        add(item: Omit<ShoppingCart, "quantity">) {
-            setCart(c => addToCart(c, item));
-        },
-        remove(id: number) {
-            setCart(c => removeFromCart(c, id));
-        },
-        update(id: number, quantity: number) {
-            setCart(c => updateQuantity(c, id, quantity));
-        },
-    };
+	try {
+		const parsed = JSON.parse(raw);
+		return Array.isArray(parsed) ? (parsed as ShoppingCart[]) : [];
+	} catch (e) {
+		console.error("Failed to parse cart", e);
+		return [];
+	}
 }
 
-export default useCart
+function useCart() {
+	const [cart, setCart] = useState<ShoppingCart[]>(() => getCartStatus());
+
+	useEffect(() => {
+		window.localStorage.setItem(CART_KEY, JSON.stringify(cart));
+	}, [cart]);
+
+	return {
+		cart,
+		add(item: Omit<ShoppingCart, "quantity">) {
+			setCart(currentCart => addToCart(currentCart, item));
+		},
+		remove(id: number) {
+			setCart(c => removeFromCart(c, id));
+		},
+		update(id: number, quantity: number) {
+			setCart(c => updateQuantity(c, id, quantity));
+		},
+	};
+}
+
+export default useCart;
