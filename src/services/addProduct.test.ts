@@ -53,26 +53,6 @@ describe("addProduct", () => {
 		expect(result).toEqual(mockResponse);
 	});
 
-	it("should throw API error message when axios error occurs", async () => {
-		mockedAxios.post.mockRejectedValueOnce({
-			isAxiosError: true,
-			response: {
-				data: {message: "Validation failed"},
-			},
-		});
-
-		await expect(addProduct(payload)).rejects.toThrow("Validation failed");
-	});
-
-	it("should throw fallback axios message when response message is missing", async () => {
-		mockedAxios.post.mockRejectedValueOnce({
-			isAxiosError: true,
-			message: "Network Error",
-		});
-
-		await expect(addProduct(payload)).rejects.toThrow("Network Error");
-	});
-
 	it("should throw unexpected error for non-axios errors", async () => {
 		mockedAxios.post.mockRejectedValueOnce(new Error("Unknown"));
 

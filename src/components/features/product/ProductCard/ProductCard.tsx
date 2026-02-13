@@ -18,9 +18,9 @@ const ProductCard: React.FC<{ product: Product }> = ({product}) => {
 		<div
 			onClick={handleCardClick}
 			className="cursor-pointer group flex flex-col relative overflow-hidden bg-surface-container-low border border-outline-variant rounded-3xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:bg-surface-container hover:border-outline">
-
 			<div id="product-image" className="relative aspect-square overflow-hidden">
 				{product.images?.[0] && !imageError ? (
+
 					<Image
 						src={product.images[0]}
 						alt={product.title}
@@ -31,6 +31,7 @@ const ProductCard: React.FC<{ product: Product }> = ({product}) => {
 						unoptimized={true}
 						onError={() => setImageError(true)}
 					/>
+
 				) : (
 					<div
 						className="flex h-full w-full items-center justify-center bg-surface-variant text-on-surface-variant">

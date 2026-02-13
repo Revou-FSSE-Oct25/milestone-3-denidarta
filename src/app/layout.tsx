@@ -44,7 +44,7 @@ export default function RootLayout({
 			lang="en"
 			className={`${bricolageGrotesque.variable} ${geistSans.variable} ${geistMono.variable}`}
 		>
-		<body className={"antialiased"}>
+		<body className={"antialiased "}>
 		<Theme>
 			<AppProviders>
 				<NavBar className="sticky top-0 z-50 bg-surface"/>
