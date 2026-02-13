@@ -1,9 +1,9 @@
 "use client";
 
-import {useEffect, useState} from "react";
-import ProductCard from "../components/ProductCard";
-import {productService} from "@/services/product.service";
-import {Product} from "@/types/product.types";
+import { useEffect, useState } from "react";
+import ProductCard from "@/components/features/product/ProductCard";
+import { productService } from "@/services/product.service";
+import { Product } from "@/types/product.types";
 
 export default function Home() {
 	const [products, setProducts] = useState<Product[]>([]);
@@ -20,7 +20,7 @@ export default function Home() {
 				setError(
 					err instanceof Error
 						? err.message
-						: "An unknown error occurred"
+						: "An unknown error occurred",
 				);
 			} finally {
 				setIsLoading(false);
@@ -42,13 +42,15 @@ export default function Home() {
 			</header>
 
 			<main className="mx-auto max-w-7xl">
-				<div id={"list-control"} className={"flex flex-row w-full space-between"}>
-				</div>
+				<div
+					id={"list-control"}
+					className={"flex flex-row w-full space-between"}
+				></div>
 
 				{/*loading state*/}
 				{isLoading && (
 					<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-						{Array.from({length: 8}).map((_, i) => (
+						{Array.from({ length: 8 }).map((_, i) => (
 							<div
 								key={i}
 								className="h-96 animate-pulse rounded-2xl bg-zinc-200"
@@ -69,10 +71,12 @@ export default function Home() {
 
 				{/*rendered ui*/}
 				{!isLoading && !error && (
-					<section id="product-grid"
-					         className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+					<section
+						id="product-grid"
+						className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+					>
 						{products.map((product) => (
-							<ProductCard key={product.id} product={product}/>
+							<ProductCard key={product.id} product={product} />
 						))}
 					</section>
 				)}

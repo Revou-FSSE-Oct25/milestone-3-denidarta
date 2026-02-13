@@ -14,7 +14,15 @@ export interface Product {
 	price: number;
 	description?: string;
 	category: ProductCategory;
-	images: string[];
+	images?: string[];
 	creationAt: string;
 	updatedAt: string;
+}
+
+export interface AddProductPayload {
+	title: string;
+	price: number;
+	description?: string;
+	categoryId: number;
+	images?: string[];
 }

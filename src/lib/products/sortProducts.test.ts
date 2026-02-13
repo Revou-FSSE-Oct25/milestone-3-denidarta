@@ -1,5 +1,3 @@
-// lib/products/sortProducts.test.ts
-import {describe, expect, it} from "vitest";
 import {sortProducts} from "@/lib/products/sortProducts";
 
 import {Product} from "@/types/product.types";

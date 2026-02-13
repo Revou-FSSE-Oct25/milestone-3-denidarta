@@ -5,5 +5,5 @@ export interface User {
 	password: string;
 	name: string;
 	role: string;
-	avatar: string;
+	avatar?: string;
 }
