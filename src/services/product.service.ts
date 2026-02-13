@@ -1,4 +1,8 @@
-import {AddProductPayload, Product, ProductCategory} from "@/types/product.types";
+import {
+	AddProductPayload,
+	Product,
+	ProductCategory,
+} from "@/types/product.types";
 import {CATEGORY_API_URL, PRODUCT_API_URL} from "@/constants";
 import axios from "axios";
 
@@ -10,7 +14,9 @@ interface ProductService {
 	addProduct: (payload: AddProductPayload) => Promise<Product>;
 }
 
-export const addProduct = async (payload: AddProductPayload): Promise<Product> => {
+export const addProduct = async (
+	payload: AddProductPayload,
+): Promise<Product> => {
 	try {
 		const response = await axios.post(PRODUCT_API_URL, payload);
 		return response.data;
@@ -22,7 +28,7 @@ export const addProduct = async (payload: AddProductPayload): Promise<Product> =
 	}
 };
 
-export const productService: ProductService = {
+export const fetchService: ProductService = {
 	getAllProducts: async (): Promise<Product[]> => {
 		const res = await fetch(PRODUCT_API_URL);
 		if (!res.ok) throw new Error("Failed to fetch products");
@@ -31,7 +37,6 @@ export const productService: ProductService = {
 
 	getProductById: async (id: string): Promise<Product> => {
 		const res = await fetch(`${PRODUCT_API_URL}/${id}`);
-
 		if (!res.ok) {
 			throw new Error(`Failed to fetch product with id ${id}`);
 		}
@@ -39,9 +44,7 @@ export const productService: ProductService = {
 	},
 
 	getProductsByCategory: async (categoryId: number): Promise<Product[]> => {
-		const res = await fetch(
-			`${CATEGORY_API_URL}/${categoryId}/products`,
-		);
+		const res = await fetch(`${CATEGORY_API_URL}/${categoryId}/products`);
 		if (!res.ok) throw new Error("Failed to fetch category products");
 		return res.json();
 	},

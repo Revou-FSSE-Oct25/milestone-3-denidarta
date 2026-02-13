@@ -1,4 +1,4 @@
-import {productService} from "@/services/product.service";
+import {fetchService} from "@/services/product.service";
 
 describe("productService.getProductCategories", () => {
 	it("returns categories when fetch succeeds", async () => {
@@ -11,7 +11,7 @@ describe("productService.getProductCategories", () => {
 			} as Response)
 		);
 
-		const result = await productService.getProductCategories();
+		const result = await fetchService.getProductCategories();
 
 		expect(fetch).toHaveBeenCalledTimes(1);
 		expect(result).toEqual(mockData);
@@ -24,7 +24,7 @@ describe("productService.getProductCategories", () => {
 			} as Response)
 		);
 
-		await expect(productService.getProductCategories()).rejects.toThrow(
+		await expect(fetchService.getProductCategories()).rejects.toThrow(
 			"Failed to fetch categories"
 		);
 	});

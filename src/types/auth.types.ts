@@ -7,3 +7,5 @@ export interface LoginResponse {
 	accessToken: string;
 	refreshToken: string;
 }
+
+export type UserRole = "guest" | "customer" | "admin";

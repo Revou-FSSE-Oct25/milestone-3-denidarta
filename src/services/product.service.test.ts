@@ -1,4 +1,4 @@
-import {productService} from "./product.service";
+import {fetchService} from "./product.service";
 import {CATEGORY_API_URL, PRODUCT_API_URL} from "@/constants";
 
 global.fetch = jest.fn();
@@ -17,7 +17,7 @@ describe("productService", () => {
 				json: async () => mockProducts,
 			});
 
-			const result = await productService.getAllProducts();
+			const result = await fetchService.getAllProducts();
 
 			expect(fetch).toHaveBeenCalledWith(PRODUCT_API_URL);
 			expect(result).toEqual(mockProducts);
@@ -26,7 +26,7 @@ describe("productService", () => {
 		it("should throw error when fetch fails", async () => {
 			(fetch as jest.Mock).mockResolvedValueOnce({ok: false});
 
-			await expect(productService.getAllProducts()).rejects.toThrow(
+			await expect(fetchService.getAllProducts()).rejects.toThrow(
 				"Failed to fetch products"
 			);
 		});
@@ -41,7 +41,7 @@ describe("productService", () => {
 				json: async () => mockProduct,
 			});
 
-			const result = await productService.getProductById("1");
+			const result = await fetchService.getProductById("1");
 
 			expect(fetch).toHaveBeenCalledWith(`${PRODUCT_API_URL}/1`);
 			expect(result).toEqual(mockProduct);
@@ -50,7 +50,7 @@ describe("productService", () => {
 		it("should throw error when fetch fails", async () => {
 			(fetch as jest.Mock).mockResolvedValueOnce({ok: false});
 
-			await expect(productService.getProductById("1")).rejects.toThrow(
+			await expect(fetchService.getProductById("1")).rejects.toThrow(
 				"Failed to fetch product with id 1"
 			);
 		});
@@ -65,7 +65,7 @@ describe("productService", () => {
 				json: async () => mockProducts,
 			});
 
-			const result = await productService.getProductsByCategory(2);
+			const result = await fetchService.getProductsByCategory(2);
 
 			expect(fetch).toHaveBeenCalledWith(
 				`${CATEGORY_API_URL}/2/products`
@@ -77,7 +77,7 @@ describe("productService", () => {
 			(fetch as jest.Mock).mockResolvedValueOnce({ok: false});
 
 			await expect(
-				productService.getProductsByCategory(2)
+				fetchService.getProductsByCategory(2)
 			).rejects.toThrow("Failed to fetch category products");
 		});
 	});
@@ -91,7 +91,7 @@ describe("productService", () => {
 				json: async () => mockCategories,
 			});
 
-			const result = await productService.getProductCategories();
+			const result = await fetchService.getProductCategories();
 
 			expect(fetch).toHaveBeenCalledWith(CATEGORY_API_URL);
 			expect(result).toEqual(mockCategories);
@@ -101,7 +101,7 @@ describe("productService", () => {
 			(fetch as jest.Mock).mockResolvedValueOnce({ok: false});
 
 			await expect(
-				productService.getProductCategories()
+				fetchService.getProductCategories()
 			).rejects.toThrow("Failed to fetch categories");
 		});
 	});

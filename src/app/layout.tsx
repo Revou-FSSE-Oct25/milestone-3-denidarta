@@ -6,6 +6,7 @@ import "./globals.css";
 import React from "react";
 import NavBar from "@/components/layout/NavBar";
 import Footer from "@/components/layout/Footer";
+import AppProviders from "@/components/providers/AppProviders";
 
 // Display font - used for headings and titles
 const bricolageGrotesque = Bricolage_Grotesque({
@@ -45,9 +46,11 @@ export default function RootLayout({
 		>
 		<body className={"antialiased"}>
 		<Theme>
-			<NavBar className="sticky top-0 z-50 bg-surface"/>
-			<main>{children}</main>
-			<Footer/>
+			<AppProviders>
+				<NavBar className="sticky top-0 z-50 bg-surface"/>
+				<main>{children}</main>
+				<Footer/>
+			</AppProviders>
 		</Theme>
 		</body>
 		</html>

@@ -4,11 +4,10 @@ import useCart from "@/hooks/useCart";
 import Button from "@/components/ui/Button";
 import Image from "next/image";
 import Link from "next/link";
-import { getCartTotal } from "@/lib/cart/shoppingCart";
+import {getCartTotal} from "@/lib/cart/shoppingCart";
 
 export default function CheckoutPage() {
-	const { cart, remove, update } = useCart();
-
+	const {cart, remove, update} = useCart();
 	const total = getCartTotal(cart);
 
 	if (cart.length === 0) {

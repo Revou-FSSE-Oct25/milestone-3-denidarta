@@ -3,7 +3,7 @@ import React from "react";
 import {SubmitHandler, useForm, useWatch} from "react-hook-form";
 import {Button, Callout, Select, TextField} from "@radix-ui/themes";
 import {AddProductPayload, ProductCategory} from "@/types/product.types";
-import {productService} from "@/services/product.service";
+import {fetchService} from "@/services/product.service";
 
 type AddProductFormValues = Omit<AddProductPayload, "images"> & { images: string };
 
@@ -34,7 +34,7 @@ const AddProductForm: React.FC<AddProductFormProps> = ({onSubmit, onCancel}) => 
 		setCategoriesStatus("loading");
 		setCategoriesError(null);
 		try {
-			const data = await productService.getProductCategories();
+			const data = await fetchService.getProductCategories();
 			setCategories(data);
 			setCategoriesStatus("loaded");
 		} catch (error) {

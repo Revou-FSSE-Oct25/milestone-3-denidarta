@@ -1,5 +1,4 @@
 import {sortProducts} from "@/lib/products/sortProducts";
-
 import {Product} from "@/types/product.types";
 
 const mockProducts: Product[] = [

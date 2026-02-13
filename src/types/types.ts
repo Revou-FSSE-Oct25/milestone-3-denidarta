@@ -8,4 +8,3 @@ export interface CardDetail {
 	expiryDate: string;
 	cvv: string;
 }
-

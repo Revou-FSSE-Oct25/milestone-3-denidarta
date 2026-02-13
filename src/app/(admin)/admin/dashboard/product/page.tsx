@@ -5,7 +5,7 @@ import {AddProductPayload, Product} from "@/types/product.types";
 import Button from "@/components/ui/Button";
 import AddProductForm from "@/components/features/product/AddProductForm";
 import {useEffect, useState} from "react";
-import {productService} from "@/services/product.service";
+import {fetchService} from "@/services/product.service";
 
 
 export default function ProductList() {
@@ -15,7 +15,7 @@ export default function ProductList() {
 	const [showSuccessCallout, setShowSuccessCallout] = useState(false);
 
 	useEffect(() => {
-		productService.getAllProducts()
+		fetchService.getAllProducts()
 			.then((data) => {
 				setProducts(data);
 			})
@@ -28,7 +28,7 @@ export default function ProductList() {
 	const handleAddProduct = async (payload: AddProductPayload) => {
 		try {
 			setSubmissionError(null);
-			const newProduct = await productService.addProduct(payload);
+			const newProduct = await fetchService.addProduct(payload);
 			setProducts((prev) => [...prev, newProduct]);
 			setShowAddProductModal(false);
 			setShowSuccessCallout(true);

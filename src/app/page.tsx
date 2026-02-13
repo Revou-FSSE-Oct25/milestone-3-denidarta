@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import ProductCard from "@/components/features/product/ProductCard";
-import { productService } from "@/services/product.service";
+import { fetchService } from "@/services/product.service";
 import { Product } from "@/types/product.types";
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
 		const fetchProducts = async () => {
 			try {
 				setIsLoading(true);
-				const data = await productService.getAllProducts();
+				const data = await fetchService.getAllProducts();
 				setProducts(data);
 			} catch (err) {
 				setError(
