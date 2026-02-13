@@ -1,16 +1,13 @@
-import axios, {AxiosInstance} from "axios";
+import axios from "axios";
 import {LoginRequest, LoginResponse} from "@/types/auth.types";
+import {AUTH_TOKEN_URL} from "@/constants";
 
-const API_URL = "https://api.escuelajs.co/api/v1";
-const apiClient: AxiosInstance = axios.create({
-	baseURL: API_URL,
-});
 
 export async function sendLoginRequest(
 	credentials: LoginRequest,
 ): Promise<LoginResponse> {
 	try {
-		const response = await apiClient.post("/auth/login", credentials);
+		const response = await axios.post(AUTH_TOKEN_URL, credentials);
 
 		return response.data;
 	} catch (error) {

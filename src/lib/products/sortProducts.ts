@@ -3,7 +3,6 @@ import {Product} from "@/types/product.types";
 export type SortKey = "price" | "name" | "date";
 export type SortOrder = "asc" | "desc";
 
-
 export function sortProducts(
 	products: Product[],
 	sortBy: SortKey,

@@ -1,8 +1,8 @@
 "use client";
 
 import {useEffect, useState} from "react";
-import {ShoppingCart} from "@/types/types";
-import {addToCart, removeFromCart, updateQuantity,} from "@/lib/transactions/shoppingCart";
+import {addToCart, removeFromCart, updateQuantity,} from "@/lib/cart/shoppingCart";
+import {ShoppingCart} from "@/types/shoppingCart";
 
 const CART_KEY = "shopping-cart";
 
@@ -31,13 +31,13 @@ function useCart() {
 	return {
 		cart,
 		add(item: Omit<ShoppingCart, "quantity">) {
-			setCart(currentCart => addToCart(currentCart, item));
+			setCart((currentCart) => addToCart(currentCart, item));
 		},
 		remove(id: number) {
-			setCart(c => removeFromCart(c, id));
+			setCart((c) => removeFromCart(c, id));
 		},
 		update(id: number, quantity: number) {
-			setCart(c => updateQuantity(c, id, quantity));
+			setCart((c) => updateQuantity(c, id, quantity));
 		},
 	};
 }

@@ -3,8 +3,9 @@
 import {useEffect, useState} from "react";
 
 import {Heading, Table} from "@radix-ui/themes";
-import {productService} from "@/services/product.service";
 import {User} from "@/types/user.types";
+import {fetchAllUsers} from "@/services/user.service";
+
 
 export default function Dashboard() {
 	const [users, setUsers] = useState<User[]>([]);
@@ -15,7 +16,7 @@ export default function Dashboard() {
 		const fetchUsers = async () => {
 			try {
 				setIsLoading(true);
-				const data = await productService.getUsers();
+				const data = await fetchAllUsers();
 				setUsers(data);
 			} catch (err) {
 				setError(
