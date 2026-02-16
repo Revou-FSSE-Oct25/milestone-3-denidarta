@@ -3,7 +3,7 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { isLoginRoute } from "@/lib/auth/authorization";
+import { isLoginRoute } from "@/lib/authorization";
 
 interface SessionUIContextValue {
 	canAccessCheckoutUI: boolean;
@@ -41,11 +41,7 @@ export function SessionUIProvider({ children }: { children: React.ReactNode }) {
 		[pathname, role],
 	);
 
-	return (
-		<SessionUIContext.Provider value={value}>
-			{children}
-		</SessionUIContext.Provider>
-	);
+	return <SessionUIContext.Provider value={value}>{children}</SessionUIContext.Provider>;
 }
 
 export function useSessionUI(): SessionUIContextValue {

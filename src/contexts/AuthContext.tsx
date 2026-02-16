@@ -5,13 +5,8 @@ import { usePathname } from "next/navigation";
 import { LoginRequest, UserRole } from "@/types/auth.types";
 import { sendLoginRequest } from "@/services/auth.service";
 import { fetchAllUsers } from "@/services/user.service";
-import {
-	clearAuthCookies,
-	getRoleCookie,
-	setAuthCookies,
-	setRoleCookie,
-} from "@/utils/cookies.client";
-import { normalizeRole } from "@/lib/auth/authorization";
+import { clearAuthCookies, getRoleCookie, setAuthCookies, setRoleCookie } from "@/utils/cookies.client";
+import { normalizeRole } from "@/lib/authorization";
 import { User } from "@/types/user.types";
 
 interface AuthContextValue {
@@ -38,14 +33,10 @@ const fallbackAuthContext: AuthContextValue = {
 	hasRole: () => false,
 };
 
-function resolveRoleByCredentials(
-	users: User[],
-	credentials: LoginRequest,
-): UserRole | null {
+function resolveRoleByCredentials(users: User[], credentials: LoginRequest): UserRole | null {
 	const user = users.find(
 		(item) =>
-			item.email.toLowerCase() === credentials.email.toLowerCase() &&
-			item.password === credentials.password,
+			item.email.toLowerCase() === credentials.email.toLowerCase() && item.password === credentials.password,
 	);
 
 	if (!user) return null;
@@ -71,36 +62,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 		return () => window.removeEventListener("auth:changed", handler);
 	}, [syncRoleFromSession]);
 
-	const login = React.useCallback(
-		async (credentials: LoginRequest): Promise<UserRole> => {
-			const sanitizedCredentials: LoginRequest = {
-				email: credentials.email.trim(),
-				password: credentials.password,
-			};
+	const login = React.useCallback(async (credentials: LoginRequest): Promise<UserRole> => {
+		const sanitizedCredentials: LoginRequest = {
+			email: credentials.email.trim(),
+			password: credentials.password,
+		};
 
-			const tokens = await sendLoginRequest(sanitizedCredentials);
-			await setAuthCookies(tokens.accessToken, tokens.refreshToken);
+		const tokens = await sendLoginRequest(sanitizedCredentials);
+		await setAuthCookies(tokens.accessToken, tokens.refreshToken);
 
-			const users = await fetchAllUsers();
-			const resolvedRole = resolveRoleByCredentials(
-				users,
-				sanitizedCredentials,
-			);
+		const users = await fetchAllUsers();
+		const resolvedRole = resolveRoleByCredentials(users, sanitizedCredentials);
 
-			if (!resolvedRole) {
-				await clearAuthCookies();
-				throw new Error(
-					"Unable to resolve role for authenticated credentials.",
-				);
-			}
+		if (!resolvedRole) {
+			await clearAuthCookies();
+			throw new Error("Unable to resolve role for authenticated credentials.");
+		}
 
-			setRoleCookie(resolvedRole);
-			setRole(resolvedRole);
-			window.dispatchEvent(new Event("auth:changed"));
-			return resolvedRole;
-		},
-		[],
-	);
+		setRoleCookie(resolvedRole);
+		setRole(resolvedRole);
+		window.dispatchEvent(new Event("auth:changed"));
+		return resolvedRole;
+	}, []);
 
 	const logout = React.useCallback(async () => {
 		await clearAuthCookies();
@@ -108,10 +91,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 		window.dispatchEvent(new Event("auth:changed"));
 	}, []);
 
-	const hasRole = React.useCallback(
-		(...roles: UserRole[]) => roles.includes(role),
-		[role],
-	);
+	const hasRole = React.useCallback((...roles: UserRole[]) => roles.includes(role), [role]);
 
 	const value = React.useMemo<AuthContextValue>(
 		() => ({

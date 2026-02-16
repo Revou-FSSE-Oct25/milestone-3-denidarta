@@ -1,57 +1,57 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import Button from "@/components/ui/Button";
-import { Avatar, IconButton } from "@radix-ui/themes";
-import clsx from "clsx";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/contexts/AuthContext";
-import { useSessionUI } from "@/contexts/SessionUIContext";
+import * as React from 'react';
+import Button from '@/components/ui/Button';
+import {Avatar, IconButton} from '@radix-ui/themes';
+import clsx from 'clsx';
+import Link from 'next/link';
+import {useRouter} from 'next/navigation';
+import {useAuth} from '@/contexts/AuthContext';
+import {useSessionUI} from '@/contexts/SessionUIContext';
 
-type NavBarState = "guest" | "customer" | "admin";
+type NavBarState = 'guest' | 'customer' | 'admin';
 
-interface NavBarProps extends React.ComponentPropsWithoutRef<"nav"> {
+interface NavBarProps extends React.ComponentPropsWithoutRef<'nav'> {
 	state?: NavBarState;
 	userAvatarSrc?: string;
 	userInitials?: string;
 }
 
-export default function NavBar({
-	state: stateProp,
-	userAvatarSrc,
-	userInitials = "U",
-	className,
-	...props
-}: NavBarProps) {
-	const router = useRouter();
-	const { logout } = useAuth();
+export default function NavBar ({
+	                                state: stateProp,
+	                                userAvatarSrc,
+	                                userInitials = 'U',
+	                                className,
+	                                ...props
+                                }: NavBarProps) {
+	const router = useRouter ();
+	const {logout} = useAuth ();
 	const {
 		canAccessCheckoutUI,
 		canAccessAdminUI,
 		showGuestNavigation,
 		showCustomerNavigation,
 		showAdminNavigation,
-	} = useSessionUI();
-
-	const resolvedState: NavBarState = React.useMemo(() => {
+	} = useSessionUI ();
+	
+	const resolvedState: NavBarState = React.useMemo (() => {
 		if (stateProp) return stateProp;
-		if (showAdminNavigation) return "admin";
-		if (showCustomerNavigation) return "customer";
-		return "guest";
+		if (showAdminNavigation) return 'admin';
+		if (showCustomerNavigation) return 'customer';
+		return 'guest';
 	}, [showAdminNavigation, showCustomerNavigation, stateProp]);
-
+	
 	const handleLogout = async () => {
-		await logout();
-		router.push("/");
+		await logout ();
+		router.push ('/');
 	};
-
+	
 	const renderActions = () => {
 		const shouldAllowAdminActions = stateProp ? true : canAccessAdminUI;
 		const shouldAllowCustomerActions = stateProp ? true : canAccessCheckoutUI;
 		const shouldAllowGuestActions = stateProp ? true : showGuestNavigation;
-
-		if (resolvedState === "admin" && shouldAllowAdminActions) {
+		
+		if (resolvedState === 'admin' && shouldAllowAdminActions) {
 			return (
 				<div className="flex gap-2">
 					<Link href="/dashboard">
@@ -60,12 +60,12 @@ export default function NavBar({
 					<Link href="/admin/dashboard">
 						<Button variant="secondary">Admin Panel</Button>
 					</Link>
-					<Button onClick={() => void handleLogout()}>Log Out</Button>
+					<Button onClick={() => void handleLogout ()}>Log Out</Button>
 				</div>
 			);
 		}
-
-		if (resolvedState === "customer" && shouldAllowCustomerActions) {
+		
+		if (resolvedState === 'customer' && shouldAllowCustomerActions) {
 			return (
 				<ul className="flex items-center gap-3">
 					<li>
@@ -92,7 +92,7 @@ export default function NavBar({
 					<li>
 						<Button
 							variant="secondary"
-							onClick={() => void handleLogout()}
+							onClick={() => void handleLogout ()}
 						>
 							Log Out
 						</Button>
@@ -100,8 +100,8 @@ export default function NavBar({
 				</ul>
 			);
 		}
-
-		if (resolvedState === "guest" && shouldAllowGuestActions) {
+		
+		if (resolvedState === 'guest' && shouldAllowGuestActions) {
 			return (
 				<div className="flex gap-2">
 					<Link href="/login">
@@ -113,14 +113,14 @@ export default function NavBar({
 				</div>
 			);
 		}
-
+		
 		return null;
 	};
-
+	
 	return (
 		<nav
-			className={clsx(
-				"border-b flex flex-row justify-between items-center px-6 h-16",
+			className={clsx (
+				'border-b flex flex-row justify-between items-center px-6 h-16',
 				className,
 			)}
 			{...props}
@@ -135,12 +135,12 @@ export default function NavBar({
 					viewBox="0 0 32 32"
 					xmlns="http://www.w3.org/2000/svg"
 				>
-					<circle cx="16" cy="16" r="15" stroke="currentColor" />
+					<circle cx="16" cy="16" r="15" stroke="currentColor"/>
 				</svg>
 				<p className="font-bold">RevoShop</p>
 			</Link>
-
-			<div>{renderActions()}</div>
+			
+			<div>{renderActions ()}</div>
 		</nav>
 	);
 }
