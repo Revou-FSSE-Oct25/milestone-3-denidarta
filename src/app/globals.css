@@ -3,7 +3,6 @@
 
 @theme {
     /* Font family definitions using Next.js font CSS variables */
-    --font-family-display: var(--font-display);
     --font-family-sans: var(--font-sans);
     --font-family-mono: var(--font-mono);
 
@@ -73,17 +72,6 @@ body {
     background: var(--background);
     color: var(--foreground);
     font-family: var(--font-family-sans);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.title,
-.headline {
-    font-family: var(--font-family-display);
 }
 
 /* Override Material Symbols default font-size */

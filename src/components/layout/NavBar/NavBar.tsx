@@ -1,146 +1,1 @@
-'use client';
-
-import * as React from 'react';
-import Button from '@/components/ui/Button';
-import {Avatar, IconButton} from '@radix-ui/themes';
-import clsx from 'clsx';
-import Link from 'next/link';
-import {useRouter} from 'next/navigation';
-import {useAuth} from '@/contexts/AuthContext';
-import {useSessionUI} from '@/contexts/SessionUIContext';
-
-type NavBarState = 'guest' | 'customer' | 'admin';
-
-interface NavBarProps extends React.ComponentPropsWithoutRef<'nav'> {
-	state?: NavBarState;
-	userAvatarSrc?: string;
-	userInitials?: string;
-}
-
-export default function NavBar ({
-	                                state: stateProp,
-	                                userAvatarSrc,
-	                                userInitials = 'U',
-	                                className,
-	                                ...props
-                                }: NavBarProps) {
-	const router = useRouter ();
-	const {logout} = useAuth ();
-	const {
-		canAccessCheckoutUI,
-		canAccessAdminUI,
-		showGuestNavigation,
-		showCustomerNavigation,
-		showAdminNavigation,
-	} = useSessionUI ();
-	
-	const resolvedState: NavBarState = React.useMemo (() => {
-		if (stateProp) return stateProp;
-		if (showAdminNavigation) return 'admin';
-		if (showCustomerNavigation) return 'customer';
-		return 'guest';
-	}, [showAdminNavigation, showCustomerNavigation, stateProp]);
-	
-	const handleLogout = async () => {
-		await logout ();
-		router.push ('/');
-	};
-	
-	const renderActions = () => {
-		const shouldAllowAdminActions = stateProp ? true : canAccessAdminUI;
-		const shouldAllowCustomerActions = stateProp ? true : canAccessCheckoutUI;
-		const shouldAllowGuestActions = stateProp ? true : showGuestNavigation;
-		
-		if (resolvedState === 'admin' && shouldAllowAdminActions) {
-			return (
-				<div className="flex gap-2">
-					<Link href="/dashboard">
-						<Button variant="outline">Dashboard</Button>
-					</Link>
-					<Link href="/admin/dashboard">
-						<Button variant="secondary">Admin Panel</Button>
-					</Link>
-					<Button onClick={() => void handleLogout ()}>Log Out</Button>
-				</div>
-			);
-		}
-		
-		if (resolvedState === 'customer' && shouldAllowCustomerActions) {
-			return (
-				<ul className="flex items-center gap-3">
-					<li>
-						<Link href="/checkout" aria-label="Open checkout page">
-							<IconButton
-								variant="soft"
-								color="gray"
-								aria-label="Open cart"
-							>
-                <span className="material-symbols-rounded text-[20px]">
-                  shopping_cart
-                </span>
-							</IconButton>
-						</Link>
-					</li>
-					<li>
-						<Avatar
-							size="2"
-							radius="small"
-							src={userAvatarSrc}
-							fallback={userInitials}
-						/>
-					</li>
-					<li>
-						<Button
-							variant="secondary"
-							onClick={() => void handleLogout ()}
-						>
-							Log Out
-						</Button>
-					</li>
-				</ul>
-			);
-		}
-		
-		if (resolvedState === 'guest' && shouldAllowGuestActions) {
-			return (
-				<div className="flex gap-2">
-					<Link href="/login">
-						<Button variant="secondary">Log In</Button>
-					</Link>
-					<Button variant="primary" type="button">
-						Sign Up
-					</Button>
-				</div>
-			);
-		}
-		
-		return null;
-	};
-	
-	return (
-		<nav
-			className={clsx (
-				'border-b flex flex-row justify-between items-center px-6 h-16',
-				className,
-			)}
-			{...props}
-		>
-			<Link
-				href="/"
-				className="flex flex-row items-center justify-center gap-2"
-			>
-				<svg
-					width="32"
-					height="32"
-					viewBox="0 0 32 32"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<circle cx="16" cy="16" r="15" stroke="currentColor"/>
-				</svg>
-				<p className="font-bold">RevoShop</p>
-			</Link>
-			
-			<div>{renderActions ()}</div>
-		</nav>
-	);
-}
+'use client';import * as React from 'react';import Button from '@/components/ui/Button';import {Avatar, IconButton} from '@radix-ui/themes';import clsx from 'clsx';import Link from 'next/link';import {useRouter} from 'next/navigation';import {useAuth} from '@/contexts/AuthContext';import {useSessionUI} from '@/contexts/SessionUIContext';type NavBarState = 'guest' | 'customer' | 'admin';interface NavBarProps extends React.ComponentPropsWithoutRef<'nav'> {	state?: NavBarState;	userAvatarSrc?: string;	userInitials?: string;}export default function NavBar ({	                                state: stateProp,	                                userAvatarSrc,	                                userInitials = 'U',	                                className,	                                ...props                                }: NavBarProps) {	const router = useRouter ();	const {logout} = useAuth ();	const {		canAccessCheckoutUI,		canAccessAdminUI,		showGuestNavigation,		showCustomerNavigation,		showAdminNavigation,	} = useSessionUI ();		const resolvedState: NavBarState = React.useMemo (() => {		if (stateProp) return stateProp;		if (showAdminNavigation) return 'admin';		if (showCustomerNavigation) return 'customer';		return 'guest';	}, [showAdminNavigation, showCustomerNavigation, stateProp]);		const handleLogout = async () => {		await logout ();		router.push ('/');	};		const renderActions = () => {		const shouldAllowAdminActions = stateProp ? true : canAccessAdminUI;		const shouldAllowCustomerActions = stateProp ? true : canAccessCheckoutUI;		const shouldAllowGuestActions = stateProp ? true : showGuestNavigation;				if (resolvedState === 'admin' && shouldAllowAdminActions) {			return (				<div className="flex gap-2">					<Link href="/dashboard">						<Button variant="outline">Dashboard</Button>					</Link>					<Link href="/admin/dashboard">						<Button variant="secondary">Admin Panel</Button>					</Link>					<Button onClick={() => void handleLogout ()}>Log Out</Button>				</div>			);		}				if (resolvedState === 'customer' && shouldAllowCustomerActions) {			return (				<ul className="flex items-center gap-3">					<li>						<Link href="/checkout" aria-label="Open checkout page">							<IconButton								variant="soft"								color="gray"								aria-label="Open cart"							>                <span className="material-symbols-rounded text-[20px]">                  shopping_cart                </span>							</IconButton>						</Link>					</li>					<li>						<Avatar							size="2"							radius="small"							src={userAvatarSrc}							fallback={userInitials}						/>					</li>					<li>						<Button							variant="secondary"							onClick={() => void handleLogout ()}						>							Log Out						</Button>					</li>				</ul>			);		}				if (resolvedState === 'guest' && shouldAllowGuestActions) {			return (				<div className="flex gap-2">					<Link href="/login">						<Button variant="secondary">Log In</Button>					</Link>					<Button variant="primary" type="button">						Sign Up					</Button>				</div>			);		}				return null;	};		return (		<nav			className={clsx (				'border-b flex flex-row justify-between items-center px-6 h-16',				className,			)}			{...props}		>			<Link				href="/"				className="flex flex-row items-center justify-center gap-2"			>				<svg					width="32"					height="32"					viewBox="0 0 32 32"					xmlns="http://www.w3.org/2000/svg"				>					<circle cx="16" cy="16" r="15" stroke="currentColor"/>				</svg>				<p className="font-bold">RevoShop</p>			</Link>						<div>{renderActions ()}</div>		</nav>	);}
