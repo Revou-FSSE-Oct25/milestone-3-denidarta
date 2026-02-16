@@ -1,19 +1,19 @@
-import {Product} from "@/types/product.types";
-import {ShoppingCart} from "@/types/shoppingCart";
+import {Product} from '@/types/Product.types';
+import {ShoppingCart} from '@/types/ShoppingCart';
 
 export interface AddToCartOptions {
 	product: Product;
-	add: (item: Omit<ShoppingCart, "quantity">) => void;
+	add: (item: Omit<ShoppingCart, 'quantity'>) => void;
 	setIsAdded: (value: boolean) => void;
 }
 
 export const handleAddToCart = ({product, add, setIsAdded}: AddToCartOptions) => {
-	add({
+	add ({
 		id: product.id,
 		title: product.title,
 		price: product.price,
-		image: product.images?.[0] ?? "/placeholder-image.png",
+		image: product.images?.[0] ?? '/placeholder-image.png',
 	});
-	setIsAdded(true);
-	setTimeout(() => setIsAdded(false), 2000);
+	setIsAdded (true);
+	setTimeout (() => setIsAdded (false), 2000);
 };

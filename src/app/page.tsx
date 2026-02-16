@@ -1,35 +1,35 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import ProductCard from "@/components/features/product/ProductCard";
-import { fetchService } from "@/services/product.service";
-import { Product } from "@/types/product.types";
+import {useEffect, useState} from 'react';
+import ProductCard from '@/components/features/product/ProductCard';
+import {fetchService} from '@/services/product.service';
+import {Product} from '@/types/Product.types';
 
-export default function Home() {
-	const [products, setProducts] = useState<Product[]>([]);
-	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState<string | null>(null);
-
-	useEffect(() => {
+export default function Home () {
+	const [products, setProducts] = useState<Product[]> ([]);
+	const [isLoading, setIsLoading] = useState (true);
+	const [error, setError] = useState<string | null> (null);
+	
+	useEffect (() => {
 		const fetchProducts = async () => {
 			try {
-				setIsLoading(true);
-				const data = await fetchService.getAllProducts();
-				setProducts(data);
+				setIsLoading (true);
+				const data = await fetchService.getAllProducts ();
+				setProducts (data);
 			} catch (err) {
-				setError(
+				setError (
 					err instanceof Error
 						? err.message
-						: "An unknown error occurred",
+						: 'An unknown error occurred',
 				);
 			} finally {
-				setIsLoading(false);
+				setIsLoading (false);
 			}
 		};
-
-		fetchProducts();
+		
+		fetchProducts ();
 	}, []);
-
+	
 	return (
 		<div className="min-h-screen bg-surface px-4 py-12 sm:px-8">
 			<header className="mb-16 text-center">
@@ -40,17 +40,17 @@ export default function Home() {
 					Discover our curated selection of premium products.
 				</p>
 			</header>
-
+			
 			<main className="mx-auto max-w-7xl">
 				<div
-					id={"list-control"}
-					className={"flex flex-row w-full space-between"}
+					id={'list-control'}
+					className={'flex flex-row w-full space-between'}
 				></div>
-
+				
 				{/*loading state*/}
 				{isLoading && (
 					<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-						{Array.from({ length: 8 }).map((_, i) => (
+						{Array.from ({length: 8}).map ((_, i) => (
 							<div
 								key={i}
 								className="h-96 animate-pulse rounded-2xl bg-zinc-200"
@@ -58,7 +58,7 @@ export default function Home() {
 						))}
 					</div>
 				)}
-
+				
 				{/*error state ui*/}
 				{error && (
 					<div className="py-20 text-center">
@@ -68,15 +68,15 @@ export default function Home() {
 						<p className="mt-2 text-zinc-500">{error}</p>
 					</div>
 				)}
-
+				
 				{/*rendered ui*/}
 				{!isLoading && !error && (
 					<section
 						id="product-grid"
 						className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
 					>
-						{products.map((product) => (
-							<ProductCard key={product.id} product={product} />
+						{products.map ((product) => (
+							<ProductCard key={product.id} product={product}/>
 						))}
 					</section>
 				)}

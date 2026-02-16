@@ -72,6 +72,6 @@ src
 │   │   ├── sortProducts.test.ts
 │   │   └── sortProducts.ts
 │   └── transactions
-│       └── shoppingCart.ts
-└── types.ts
+│       └── ShoppingCart.ts
+└── Types.ts
 ```

@@ -1,33 +1,33 @@
-import {Product} from "@/types/product.types";
+import {Product} from '@/types/Product.types';
 
-export type SortKey = "price" | "name" | "date";
-export type SortOrder = "asc" | "desc";
+export type SortKey = 'price' | 'name' | 'date';
+export type SortOrder = 'asc' | 'desc';
 
-export function sortProducts(
+export function sortProducts (
 	products: Product[],
 	sortBy: SortKey,
-	order: SortOrder = "asc"
+	order: SortOrder = 'asc'
 ) {
-	return [...products].sort((a, b) => {
+	return [...products].sort ((a, b) => {
 		let result = 0;
-
+		
 		switch (sortBy) {
-			case "price":
+			case 'price':
 				result = a.price - b.price;
 				break;
-
-			case "name":
-				result = a.title.localeCompare(b.title);
+			
+			case 'name':
+				result = a.title.localeCompare (b.title);
 				break;
-
-			case "date":
+			
+			case 'date':
 				result =
-					new Date(a.creationAt).getTime() -
-					new Date(b.creationAt).getTime();
+					new Date (a.creationAt).getTime () -
+					new Date (b.creationAt).getTime ();
 				break;
 		}
-
-		return order === "asc" ? result : -result;
+		
+		return order === 'asc' ? result : -result;
 	});
 }
 

@@ -1,47 +1,47 @@
-"use client";
+'use client';
 
-import {Callout, Dialog, Table} from "@radix-ui/themes";
-import {AddProductPayload, Product} from "@/types/product.types";
-import Button from "@/components/ui/Button";
-import AddProductForm from "@/components/features/product/AddProductForm";
-import {useEffect, useState} from "react";
-import {fetchService} from "@/services/product.service";
+import {Callout, Dialog, Table} from '@radix-ui/themes';
+import {AddProductPayload, Product} from '@/types/Product.types';
+import Button from '@/components/ui/Button';
+import AddProductForm from '@/components/features/product/AddProductForm';
+import {useEffect, useState} from 'react';
+import {fetchService} from '@/services/product.service';
 
 
-export default function ProductList() {
-	const [products, setProducts] = useState<Product[]>([]);
-	const [showAddProductModal, setShowAddProductModal] = useState(false);
-	const [submissionError, setSubmissionError] = useState<string | null>(null);
-	const [showSuccessCallout, setShowSuccessCallout] = useState(false);
-
-	useEffect(() => {
-		fetchService.getAllProducts()
-			.then((data) => {
-				setProducts(data);
+export default function ProductList () {
+	const [products, setProducts] = useState<Product[]> ([]);
+	const [showAddProductModal, setShowAddProductModal] = useState (false);
+	const [submissionError, setSubmissionError] = useState<string | null> (null);
+	const [showSuccessCallout, setShowSuccessCallout] = useState (false);
+	
+	useEffect (() => {
+		fetchService.getAllProducts ()
+			.then ((data) => {
+				setProducts (data);
 			})
-			.catch((error) => {
-				console.error(error);
-				setSubmissionError(error instanceof Error ? error.message : "Failed to load products");
+			.catch ((error) => {
+				console.error (error);
+				setSubmissionError (error instanceof Error ? error.message : 'Failed to load products');
 			});
 	}, []);
-
+	
 	const handleAddProduct = async (payload: AddProductPayload) => {
 		try {
-			setSubmissionError(null);
-			const newProduct = await fetchService.addProduct(payload);
-			setProducts((prev) => [...prev, newProduct]);
-			setShowAddProductModal(false);
-			setShowSuccessCallout(true);
-			setTimeout(() => setShowSuccessCallout(false), 3000);
+			setSubmissionError (null);
+			const newProduct = await fetchService.addProduct (payload);
+			setProducts ((prev) => [...prev, newProduct]);
+			setShowAddProductModal (false);
+			setShowSuccessCallout (true);
+			setTimeout (() => setShowSuccessCallout (false), 3000);
 		} catch (error) {
-			setSubmissionError(error instanceof Error ? error.message : "Failed to add product");
+			setSubmissionError (error instanceof Error ? error.message : 'Failed to add product');
 		}
 	};
 	return (
-		<main className={" flex flex-col px-5"}>
+		<main className={' flex flex-col px-5'}>
 			<Dialog.Root open={showAddProductModal} onOpenChange={setShowAddProductModal}>
 				<Dialog.Trigger>
-					<Button className={"w-fit"} onClick={() => setShowAddProductModal(true)}>
+					<Button className={'w-fit'} onClick={() => setShowAddProductModal (true)}>
 						Add Product
 					</Button>
 				</Dialog.Trigger>
@@ -50,20 +50,20 @@ export default function ProductList() {
 					<Dialog.Description size="2" mb="4">
 						Fill in the details for the new product.
 					</Dialog.Description>
-
+					
 					{submissionError && (
 						<Callout.Root color="red" role="alert" className="mb-4">
 							<Callout.Text>{submissionError}</Callout.Text>
 						</Callout.Root>
 					)}
-
+					
 					<AddProductForm
 						onSubmit={handleAddProduct}
-						onCancel={() => setShowAddProductModal(false)}
+						onCancel={() => setShowAddProductModal (false)}
 					/>
 				</Dialog.Content>
 			</Dialog.Root>
-
+			
 			{showSuccessCallout && (
 				<Callout.Root color="green" role="alert" className="mb-4 mt-4">
 					<Callout.Text>
@@ -71,7 +71,7 @@ export default function ProductList() {
 					</Callout.Text>
 				</Callout.Root>
 			)}
-
+			
 			<Table.Root variant="surface">
 				<Table.Header>
 					<Table.Row>
@@ -88,11 +88,11 @@ export default function ProductList() {
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
-					{products.map((product) => (
+					{products.map ((product) => (
 						<Table.Row
 							key={product.id}
 							className={
-								"cursor-pointer transition-colors even:bg-gray-100 odd:bg-gray-200"
+								'cursor-pointer transition-colors even:bg-gray-100 odd:bg-gray-200'
 							}
 						>
 							<Table.RowHeaderCell>

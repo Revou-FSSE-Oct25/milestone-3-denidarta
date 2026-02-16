@@ -1,39 +1,39 @@
-"use client";
+'use client';
 
-import {useEffect, useState} from "react";
+import {useEffect, useState} from 'react';
 
-import {Heading, Table} from "@radix-ui/themes";
-import {User} from "@/types/user.types";
-import {fetchAllUsers} from "@/services/user.service";
+import {Heading, Table} from '@radix-ui/themes';
+import {User} from '@/types/User.types';
+import {fetchAllUsers} from '@/services/user.service';
 
 
-export default function Dashboard() {
-	const [users, setUsers] = useState<User[]>([]);
-	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState<string | null>(null);
-
-	useEffect(() => {
+export default function Dashboard () {
+	const [users, setUsers] = useState<User[]> ([]);
+	const [isLoading, setIsLoading] = useState (true);
+	const [error, setError] = useState<string | null> (null);
+	
+	useEffect (() => {
 		const fetchUsers = async () => {
 			try {
-				setIsLoading(true);
-				const data = await fetchAllUsers();
-				setUsers(data);
+				setIsLoading (true);
+				const data = await fetchAllUsers ();
+				setUsers (data);
 			} catch (err) {
-				setError(
-					err instanceof Error ? err.message : "An unknown error occurred.",
+				setError (
+					err instanceof Error ? err.message : 'An unknown error occurred.',
 				);
 			} finally {
-				setIsLoading(false);
+				setIsLoading (false);
 			}
 		};
-		fetchUsers();
+		fetchUsers ();
 	}, []);
-
+	
 	if (isLoading) return <div>Loading...</div>;
 	if (error) return <div>Error: {error}</div>;
-
+	
 	return (
-		<main className={"flex flex-col px-5"}>
+		<main className={'flex flex-col px-5'}>
 			<Heading>User Dashboard</Heading>
 			<Table.Root variant="surface">
 				<Table.Header>
@@ -43,16 +43,16 @@ export default function Dashboard() {
 						<Table.ColumnHeaderCell>Date Added</Table.ColumnHeaderCell>
 					</Table.Row>
 				</Table.Header>
-
+				
 				<Table.Body>
-					{users.map((user) => (
+					{users.map ((user) => (
 						<Table.Row key={user.id}>
 							<Table.RowHeaderCell>{user.name}</Table.RowHeaderCell>
 							<Table.Cell>{user.email}</Table.Cell>
 							<Table.Cell>
-								{new Date(user.creationAt).toLocaleString()}
+								{new Date (user.creationAt).toLocaleString ()}
 							</Table.Cell><Table.Cell>
-							{new Date(user.creationAt).toLocaleString()}
+							{new Date (user.creationAt).toLocaleString ()}
 						</Table.Cell>
 						</Table.Row>
 					))}
