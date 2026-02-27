@@ -1,8 +1,8 @@
 "use client";
 
 import {useEffect, useState} from "react";
-
-import {Heading, Table} from "@radix-ui/themes";
+import {Callout, Heading} from "@radix-ui/themes";
+import {UsersTable} from "@/components/features/admin/dashboard";
 import {User} from "@/types/user.types";
 import {fetchAllUsers} from "@/services/user.service";
 
@@ -26,38 +26,29 @@ export default function Dashboard() {
 				setIsLoading(false);
 			}
 		};
-		fetchUsers();
+		void fetchUsers();
 	}, []);
 
-	if (isLoading) return <div>Loading...</div>;
-	if (error) return <div>Error: {error}</div>;
-
 	return (
-		<main className={"flex flex-col px-5"}>
-			<Heading>User Dashboard</Heading>
-			<Table.Root variant="surface">
-				<Table.Header>
-					<Table.Row>
-						<Table.ColumnHeaderCell>Full name</Table.ColumnHeaderCell>
-						<Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
-						<Table.ColumnHeaderCell>Date Added</Table.ColumnHeaderCell>
-					</Table.Row>
-				</Table.Header>
-
-				<Table.Body>
-					{users.map((user) => (
-						<Table.Row key={user.id}>
-							<Table.RowHeaderCell>{user.name}</Table.RowHeaderCell>
-							<Table.Cell>{user.email}</Table.Cell>
-							<Table.Cell>
-								{new Date(user.creationAt).toLocaleString()}
-							</Table.Cell><Table.Cell>
-							{new Date(user.creationAt).toLocaleString()}
-						</Table.Cell>
-						</Table.Row>
-					))}
-				</Table.Body>
-			</Table.Root>
+		<main className="min-h-screen bg-[#f4f4f4] px-4 py-6 md:px-8">
+			<div className="mx-auto flex w-full max-w-[1240px] flex-col gap-4">
+				<Heading as="h1" size="8" className="text-[#161616]">
+					User Dashboard
+				</Heading>
+				<section className="border border-[#c6c6c6] bg-white p-5">
+					{isLoading && <div className="text-sm text-[#525252]">Loading users...</div>}
+					{error && !isLoading && (
+						<Callout.Root color="red" role="alert" className="!rounded-none">
+							<Callout.Text>Error: {error}</Callout.Text>
+						</Callout.Root>
+					)}
+					{!isLoading && !error && (
+						<div className="overflow-x-auto">
+							<UsersTable rows={users} />
+						</div>
+					)}
+				</section>
+			</div>
 		</main>
 	);
 }
